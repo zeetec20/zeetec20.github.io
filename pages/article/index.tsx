@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Container, Row, Col, Navbar, Nav, NavDropdown, Button, Card } from 'react-bootstrap'
+import { Container, Row, Col, Button, Card } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { InferGetServerSidePropsType } from 'next'
@@ -7,21 +7,20 @@ import fs from 'fs'
 import matter from 'gray-matter';
 import moment from 'moment';
 import Head from 'next/head'
-import NavbarComponent from '../component/Navbar'
-import FooterComponent from '../component/Footer'
-import ArticleComponent from '../component/Article'
+import NavbarComponent from '../../component/Navbar'
+import FooterComponent from '../../component/Footer'
+import ArticleComponent from '../../component/Article'
 import Link from 'next/link'
 // import Image from 'next/image'
 
-
-const HomePage = ({ article }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const ArticlePage = ({ article }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const [loading, setloading] = useState(false)
 
   const listArticle = article.map((value, key) => {
     const createdAt: string = moment(value['meta']['createdAt'], 'DD-MM-YYYY').format('dddd, MMMM DD YYYY')
     return (
       <div key={key} onClick={() => setloading(true)}>
-        <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tag={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={moment(value['meta']['createdAt'], 'DD-MM-YYYY').fromNow()} />
+         <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tag={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={moment(value['meta']['createdAt'], 'DD-MM-YYYY').fromNow()} />
       </div>
     )
   })
@@ -29,26 +28,16 @@ const HomePage = ({ article }: InferGetServerSidePropsType<typeof getServerSideP
   return (
     <>
       <Head>
-        <title>Firman Lestari ✋</title>
+        <title>Article | Firman ✋</title>
       </Head>
 
-      <NavbarComponent loading={loading}/>
+      <NavbarComponent loading={loading} />
+      
+      <Container style={{fontFamily: 'Source Sans Pro', marginTop: '5.5%', minHeight: '550px'}}>
+        <b><p style={{fontSize: '35px', fontWeight: 'bold'}}>Article.</p></b>
+        <p style={{width: '70%'}}>Sometimes when i&apos;m bored I like writing and this article is very usefull for my noted because I often forget what I learned, maybe my article is not good like medium or dev.to but it&apos;s still worth for your read.</p>
 
-      <Container style={{ marginTop: '5.5%' }}>
-        <b><p style={{ fontFamily: 'Source Sans Pro', fontSize: '40px' }}>I&apos; am Firman Justisio Lestari</p></b>
-        <p style={{ fontFamily: 'ubuntu', fontSize: '20px', width: '70%' }}>You can call me firman, I&apos; am Software Engineer were focused on 🖥️ web app with technology (Django, Laravel, Next) and 📱 mobile app with technology (Flutter) </p>
-
-        <div onClick={() => setloading(true)}>
-          <Link href='about' passHref>
-            <Button className='mt-4 py-2 button-about' variant='outline-dark'>More Abaut Me</Button>
-          </Link>
-        </div>
-      </Container>
-
-      <Container style={{ marginTop: '8%', fontFamily: 'Source Sans Pro' }}>
-        <h4>Recent Article 📖</h4>
-
-        <div className='mt-4'>
+        <div style={{marginTop: '4%'}}>
           {listArticle}
         </div>
       </Container>
@@ -58,7 +47,7 @@ const HomePage = ({ article }: InferGetServerSidePropsType<typeof getServerSideP
   )
 }
 
-export default HomePage
+export default ArticlePage
 
 export async function getServerSideProps() {
   const files = fs.readdirSync('articles')

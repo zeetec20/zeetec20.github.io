@@ -1,0 +1,19 @@
+.description {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.tag {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.thumbnail {
+    margin-top: 25px;
+    height: 420px;
+    margin-bottom: 20px;
+}
+
+.article_width {
+    max-width: 60%;
+}

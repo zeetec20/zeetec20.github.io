@@ -9,12 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@rena.to/github-blog": "^0.4.1",
+    "@types/osmosis": "^1.1.1",
+    "bootstrap": "^5.1.0",
+    "dotenv": "^10.0.0",
+    "fetch-with-proxy": "^3.0.1",
+    "gray-matter": "^4.0.3",
+    "moment": "^2.29.1",
     "next": "11.1.0",
+    "osmosis": "^1.1.10",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-bootstrap": "^2.0.0-beta.6",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.2.0",
+    "react-markdown": "^7.0.1",
+    "react-syntax-highlighter": "^15.4.4"
   },
   "devDependencies": {
     "@types/react": "17.0.19",
+    "@types/react-syntax-highlighter": "^13.5.2",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
     "typescript": "4.3.5"

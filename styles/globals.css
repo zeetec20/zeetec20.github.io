@@ -1,16 +1,90 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+.socialmedia {
+    transition: all 0.35s;
+    color: black;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.socialmedia:hover {
+    transition: all 0.35s;
+    color: #116efa !important;
 }
 
-* {
-  box-sizing: border-box;
+.tag {
+    font-weight: bold;
+    font-size: 13px;
+    color: #116efa !important;
+}
+
+.link-card, .link-without-effect {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.card-article, .card-portfolio {
+    border-color: #116EFA15;
+    transition: all 0.35s;
+    cursor: pointer;
+}
+
+.card-article:hover, .card-portfolio:hover {
+    border-color: #116efa;
+    transition: all 0.35s;
+}
+
+.button-about {
+    transition: all 0.35s;
+    background-color: transparent;
+    border-color: black !important;
+    color: black !important;
+}
+
+.button-about:hover {
+    transition: all 0.35s;
+    background-color: transparent !important;
+    border-color: #116efa !important;
+    color: black !important;
+}
+
+.button-about:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.footer {
+    font-size: 14px;
+}
+
+@keyframes loading {
+    0% {
+        left: 0%;
+    }
+
+    100% {
+        left: 150%;
+    }
+}
+
+.loading {
+    height: 2px;
+    width: 35%;
+    border-radius: 5px;
+    margin-left: -50%;
+    background-color: #116efa;
+    position: relative;
+    animation-name: loading;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.loading-visible {
+    visibility: visible;
+    transition: all 0.5s;
+}
+
+.loading-hidden {
+    visibility: hidden;
+    transition: all 0.5s;
 }
