@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { Container } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { InferGetServerSidePropsType } from 'next'
 import fs from 'fs'
 import matter from 'gray-matter'
 import Head from 'next/head'
@@ -38,7 +37,7 @@ const Markdown = (props: { markdown: string }) => {
   >{props.markdown}</ReactMarkdown>
 }
 
-const DetailPortfolioPage = ({ status, meta, article }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const DetailPortfolioPage = ({ status, meta, article }: {status: any, meta: any, article: any}) => {
   if (status == 404) return <NextError statusCode={status} />
 
   let tags = (meta['tag'] as string[]).map((tag, key) => <Link href={`/article/tag/${tag.toLowerCase()}`} key={key} passHref><span style={{cursor: 'pointer'}}><ArticleComponent.Tag tag={tag} className={styles.tag} /></span></Link>)
@@ -80,18 +79,26 @@ const DetailPortfolioPage = ({ status, meta, article }: InferGetServerSidePropsT
 
 export default DetailPortfolioPage
 
-export async function getServerSideProps(context: any) {
+export async function getStaticPaths() {
+  const env = dotenv.config()?.parsed
+  const files = fs.readdirSync(env?.PRODUCTION ? './portfolio' : 'portfolio')
+
+  let portfolio: string[] = []
+
+  files.forEach(file => {
+    portfolio.push(file.split('.')[0])
+  })
+
+  return {
+    paths: portfolio.map(portfolio => { return {params: {slug: portfolio.toLowerCase()}}}),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps(context: any) {
   const env = dotenv.config()?.parsed
 
-  const { slug } = context.query
-  if (!fs.existsSync(env?.PRODUCTION ? `./portfolio/${slug}.md` : `portfolio/${slug}.md`)) return {
-    props: {
-      status: 404,
-      meta: null,
-      article: null,
-    }
-  }
-
+  const { slug } = context.params
   const file = fs.readFileSync(env?.PRODUCTION ? `./portfolio/${slug}.md` : `portfolio/${slug}.md`)
   const meta: any = matter(file).data
 

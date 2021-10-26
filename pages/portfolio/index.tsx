@@ -2,7 +2,6 @@
 import { Container, Row, Col, Button, Card } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
-import { InferGetServerSidePropsType } from 'next'
 import fs from 'fs'
 import matter from 'gray-matter';
 import Head from 'next/head'
@@ -14,7 +13,7 @@ import Link from 'next/link'
 import dotenv from 'dotenv'
 // import Image from 'next/image'
 
-const PortfolioPage = ({ portfolio }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const PortfolioPage = ({ portfolio }: {portfolio: any[]}) => {
   const [loading, setloading] = useState(false)
 
   let portfolioComponent: Array<Array<any>> = []
@@ -65,7 +64,7 @@ const PortfolioPage = ({ portfolio }: InferGetServerSidePropsType<typeof getServ
 
 export default PortfolioPage
 
-export async function getServerSideProps() {
+export async function getStaticProps(context: any) {
   const env = dotenv.config()?.parsed
 
   const files = fs.readdirSync(env?.PRODUCTION ? './portfolio' : 'portfolio')
