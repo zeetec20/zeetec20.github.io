@@ -12,6 +12,7 @@ import NavbarComponent from '../../../component/Navbar'
 import FooterComponent from '../../../component/Footer'
 import ArticleComponent from '../../../component/Article'
 import Link from 'next/link'
+import dotenv from 'dotenv'
 // import Image from 'next/image'
 
 const ArticleTagPage = ({ article }: {article: any[]}) => {
@@ -54,13 +55,15 @@ const ArticleTagPage = ({ article }: {article: any[]}) => {
 export default ArticleTagPage
 
 export async function getServerSideProps(req: any, res: any) {
-  const files = fs.readdirSync('articles')
+  const env = dotenv.config()?.parsed
+
+  const files = fs.readdirSync(env?.PRODCUTION ? './articles' : 'articles')
   let data: any[] = []
 
-  await Promise.all(files.filter(file => (matter(fs.readFileSync(`articles/${file}`)).data['tag'] as [string]).filter(tag => tag.toLowerCase() == req.query['tag'].toLowerCase()).length != 0).map(async (value) => {
-    const file = fs.readFileSync(`articles/${value}`)
+  await Promise.all(files.filter(file => (matter(fs.readFileSync(env?.PRODUCTION ? `./articles/${file}` : `articles/${file}`)).data['tag'] as [string]).filter(tag => tag.toLowerCase() == req.query['tag'].toLowerCase()).length != 0).map(async (value) => {
+    const file = fs.readFileSync(env?.PRODCUTION ? `./articles/${value}` : `articles/${value}`)
     const meta: any = matter(file).data
-    console.log(meta)
+    
     const resultGithub: Response = await fetch(`https://github.com/${meta['writer']}`, {
       headers: { 'Content-Type': 'text/html' },
     });
