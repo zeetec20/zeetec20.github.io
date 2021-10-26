@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { Container, Row, Col, Button, Card } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
-import { InferGetServerSidePropsType } from 'next'
 import fs from 'fs'
 import matter from 'gray-matter'
 import Head from 'next/head'
@@ -18,6 +17,7 @@ import { xonokai } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import Image from 'next/image'
 import Link from 'next/link'
 import dotenv from 'dotenv'
+import { GetStaticProps } from 'next';
 
 const Markdown = (props: { markdown: string }) => {
   return <ReactMarkdown components={{
@@ -39,7 +39,7 @@ const Markdown = (props: { markdown: string }) => {
   >{props.markdown}</ReactMarkdown>
 }
 
-const DetailArticlePage = ({ status, meta, article }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const DetailArticlePage = ({ status, meta, article }: {status: any, meta: any, article: any}) => {
   const [loading, setloading] = useState(false)
   if (status == 404) return <NextError statusCode={status} />
 
@@ -88,18 +88,27 @@ const DetailArticlePage = ({ status, meta, article }: InferGetServerSidePropsTyp
 
 export default DetailArticlePage
 
-export async function getServerSideProps(context: any) {
+export async function getStaticPaths() {
+  const env = dotenv.config()?.parsed
+  const files = fs.readdirSync(env?.PRODUCTION ? './articles' : 'articles')
+
+  let article: string[] = []
+
+  files.forEach(file => {
+    article.push(file.split('.')[0])
+  })
+
+  console.log(article)
+  return {
+    paths: article.map(article => { return {params: {slug: article.toLowerCase()}}}),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps(context: any) {
   const env = dotenv.config()?.parsed
 
-  const { slug } = context.query
-  if (!fs.existsSync(env?.PRODUCTION ? `./articles/${slug}.md` : `articles/${slug}.md`)) return {
-    props: {
-      status: 404,
-      meta: null,
-      article: null,
-    }
-  }
-
+  const { slug } = context.params
   const file = fs.readFileSync(env?.PRODUCTION ? `./articles/${slug}.md` : `articles/${slug}.md`)
   const meta: any = matter(file).data
   const resultGithub: Response = await fetch(`https://github.com/${meta['writer']}`, {
@@ -113,6 +122,6 @@ export async function getServerSideProps(context: any) {
   meta['writer-name'] = name
 
   return {
-    props: { meta, article: matter(file).content }
+    props: { meta, article: matter(file).content },
   }
 }

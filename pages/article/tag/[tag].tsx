@@ -2,7 +2,6 @@
 import { Container, Row, Col, Button, Card } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useEffect, useState } from 'react'
-import { InferGetServerSidePropsType } from 'next'
 import fs from 'fs'
 import matter from 'gray-matter'
 import moment from 'moment'
@@ -54,13 +53,35 @@ const ArticleTagPage = ({ article }: {article: any[]}) => {
 
 export default ArticleTagPage
 
-export async function getServerSideProps(req: any, res: any) {
+export async function getStaticPaths() {
+  const env = dotenv.config()?.parsed
+  const files = fs.readdirSync(env?.PRODUCTION ? './articles' : 'articles')
+
+  let tags: string[] = []
+
+  files.forEach(file => {
+    const text = fs.readFileSync(env?.PRODUCTION ? `./articles/${file}` : `articles/${file}`)
+    const meta: { [key: string]: any; } = matter(text).data;
+      
+    (meta['tag'] as string[]).forEach((element: string) => {
+      if (tags.filter(e => e == element).length == 0) tags.push(element)
+    });
+  })
+
+  return {
+    paths: tags.map(tag => { return {params: {tag: tag.toLowerCase()}}}),
+    fallback: false,
+  }
+}
+
+export async function getStaticProps(context: any) {
   const env = dotenv.config()?.parsed
 
   const files = fs.readdirSync(env?.PRODUCTION ? './articles' : 'articles')
   let data: any[] = []
+  const { tag } = context.params
 
-  await Promise.all(files.filter(file => (matter(fs.readFileSync(env?.PRODUCTION ? `./articles/${file}` : `articles/${file}`)).data['tag'] as [string]).filter(tag => tag.toLowerCase() == req.query['tag'].toLowerCase()).length != 0).map(async (value) => {
+  await Promise.all(files.filter(file => (matter(fs.readFileSync(env?.PRODUCTION ? `./articles/${file}` : `articles/${file}`)).data['tag'] as [string]).filter(tag_file => tag.toLowerCase() == tag_file.toLowerCase()).length != 0).map(async (value) => {
     const file = fs.readFileSync(env?.PRODUCTION ? `./articles/${value}` : `articles/${value}`)
     const meta: any = matter(file).data
     

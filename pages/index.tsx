@@ -2,7 +2,6 @@
 import { Container, Row, Col, Navbar, Nav, NavDropdown, Button, Card } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
-import { InferGetServerSidePropsType } from 'next'
 import fs from 'fs'
 import matter from 'gray-matter';
 import moment from 'moment';
@@ -16,7 +15,7 @@ import dotenv from 'dotenv'
 // import Image from 'next/image'
 
 
-const HomePage = ({ article }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const HomePage = ({ article }: {article: any[]}) => {
   const [loading, setloading] = useState(false)
 
   const listArticle = article.map((value, key) => {
@@ -62,7 +61,7 @@ const HomePage = ({ article }: InferGetServerSidePropsType<typeof getServerSideP
 
 export default HomePage
 
-export async function getServerSideProps() {
+export async function getStaticProps(context: any) {
   const env = dotenv.config()?.parsed
   const files = fs.readdirSync(env?.PRODUCTION ? './articles' : 'articles')
   console.log(env?.PRODUCTION ? './articles' : 'articles')
