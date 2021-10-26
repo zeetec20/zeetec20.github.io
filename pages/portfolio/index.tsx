@@ -11,6 +11,7 @@ import NavbarComponent from '../../component/Navbar'
 import FooterComponent from '../../component/Footer'
 import PortfolioComponent from '../../component/Portfolio'
 import Link from 'next/link'
+import dotenv from 'dotenv'
 // import Image from 'next/image'
 
 const PortfolioPage = ({ portfolio }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
@@ -65,11 +66,13 @@ const PortfolioPage = ({ portfolio }: InferGetServerSidePropsType<typeof getServ
 export default PortfolioPage
 
 export async function getServerSideProps() {
-  const files = fs.readdirSync('portfolio')
+  const env = dotenv.config()?.parsed
+
+  const files = fs.readdirSync(env?.PRODCUTION ? './portfolio' : 'portfolio')
   let data: any[] = []
 
   await Promise.all(files.map(async (value) => {
-    const file = fs.readFileSync(`portfolio/${value}`)
+    const file = fs.readFileSync(env?.PRODCUTION ? `./portfolio/${value}` : `portfolio/${value}`)
     const meta: any = matter(file).data
 
     data.push({

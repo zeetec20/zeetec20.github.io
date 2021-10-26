@@ -17,6 +17,7 @@ import { Prism as ReactSyntaxHighlighter } from 'react-syntax-highlighter'
 import { xonokai } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import Image from 'next/image'
 import Link from 'next/link'
+import dotenv from 'dotenv'
 
 const Markdown = (props: { markdown: string }) => {
   return <ReactMarkdown components={{
@@ -88,9 +89,10 @@ const DetailArticlePage = ({ status, meta, article }: InferGetServerSidePropsTyp
 export default DetailArticlePage
 
 export async function getServerSideProps(context: any) {
+  const env = dotenv.config()?.parsed
 
   const { slug } = context.query
-  if (!fs.existsSync(`articles/${slug}.md`)) return {
+  if (!fs.existsSync(env?.PRODUCTION ? `./articles/${slug}.md` : `articles/${slug}.md`)) return {
     props: {
       status: 404,
       meta: null,
@@ -98,7 +100,7 @@ export async function getServerSideProps(context: any) {
     }
   }
 
-  const file = fs.readFileSync(`articles/${slug}.md`)
+  const file = fs.readFileSync(env?.PRODUCTION ? `./articles/${slug}.md` : `articles/${slug}.md`)
   const meta: any = matter(file).data
   const resultGithub: Response = await fetch(`https://github.com/${meta['writer']}`, {
     headers: { 'Content-Type': 'text/html' },

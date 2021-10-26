@@ -16,6 +16,7 @@ import { Prism as ReactSyntaxHighlighter } from 'react-syntax-highlighter'
 import { xonokai } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import Image from 'next/image'
 import Link from 'next/link'
+import dotenv from 'dotenv'
 
 const Markdown = (props: { markdown: string }) => {
   return <ReactMarkdown components={{
@@ -80,9 +81,10 @@ const DetailPortfolioPage = ({ status, meta, article }: InferGetServerSidePropsT
 export default DetailPortfolioPage
 
 export async function getServerSideProps(context: any) {
+  const env = dotenv.config()?.parsed
 
   const { slug } = context.query
-  if (!fs.existsSync(`portfolio/${slug}.md`)) return {
+  if (!fs.existsSync(env?.PRODUCTION ? `./portfolio/${slug}.md` : `portfolio/${slug}.md`)) return {
     props: {
       status: 404,
       meta: null,
@@ -90,7 +92,7 @@ export async function getServerSideProps(context: any) {
     }
   }
 
-  const file = fs.readFileSync(`portfolio/${slug}.md`)
+  const file = fs.readFileSync(env?.PRODUCTION ? `./portfolio/${slug}.md` : `portfolio/${slug}.md`)
   const meta: any = matter(file).data
 
   return {
