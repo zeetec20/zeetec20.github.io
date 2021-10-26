@@ -1,0 +1,5 @@
+@media only screen and (max-width: 570px) {
+    .wrap {
+        max-width: 94%;
+    }
+}

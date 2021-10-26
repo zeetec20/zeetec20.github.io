@@ -6,6 +6,7 @@ import { InferGetServerSidePropsType } from 'next'
 import fs from 'fs'
 import matter from 'gray-matter';
 import moment from 'moment';
+import styles from '../styles/Home.module.css'
 import Head from 'next/head'
 import NavbarComponent from '../component/Navbar'
 import FooterComponent from '../component/Footer'
@@ -34,7 +35,7 @@ const HomePage = ({ article }: InferGetServerSidePropsType<typeof getServerSideP
 
       <NavbarComponent loading={loading}/>
 
-      <Container style={{ marginTop: '5.5%' }}>
+      <Container className={styles.wrap} style={{ marginTop: '5.5%' }}>
         <b><p style={{ fontFamily: 'Source Sans Pro', fontSize: '40px' }}>I&apos; am Firman Justisio Lestari</p></b>
         <p style={{ fontFamily: 'ubuntu', fontSize: '20px', width: '70%' }}>You can call me firman, I&apos; am Software Engineer were focused on 🖥️ web app with technology (Django, Laravel, Next) and 📱 mobile app with technology (Flutter) </p>
 
@@ -45,7 +46,7 @@ const HomePage = ({ article }: InferGetServerSidePropsType<typeof getServerSideP
         </div>
       </Container>
 
-      <Container style={{ marginTop: '8%', fontFamily: 'Source Sans Pro' }}>
+      <Container className={styles.wrap} style={{ marginTop: '8%', fontFamily: 'Source Sans Pro' }}>
         <h4>Recent Article 📖</h4>
 
         <div className='mt-4'>
