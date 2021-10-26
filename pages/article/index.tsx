@@ -54,11 +54,11 @@ export default ArticlePage
 export async function getServerSideProps() {
   const env = dotenv.config()?.parsed
 
-  const files = fs.readdirSync(env?.PRODCUTION ? './articles' : 'articles')
+  const files = fs.readdirSync(env?.PRODUCTION ? './articles' : 'articles')
   let data: any[] = []
 
   await Promise.all(files.map(async (value) => {
-    const file = fs.readFileSync(env?.PRODCUTION ? `./articles/${value}` : `articles/${value}`)
+    const file = fs.readFileSync(env?.PRODUCTION ? `./articles/${value}` : `articles/${value}`)
     const meta: any = matter(file).data
     const resultGithub: Response = await fetch(`https://github.com/${meta['writer']}`, {
       headers: { 'Content-Type': 'text/html' },
