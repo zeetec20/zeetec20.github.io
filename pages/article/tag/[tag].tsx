@@ -57,11 +57,11 @@ export default ArticleTagPage
 export async function getServerSideProps(req: any, res: any) {
   const env = dotenv.config()?.parsed
 
-  const files = fs.readdirSync(env?.PRODCUTION ? './articles' : 'articles')
+  const files = fs.readdirSync(env?.PRODUCTION ? './articles' : 'articles')
   let data: any[] = []
 
   await Promise.all(files.filter(file => (matter(fs.readFileSync(env?.PRODUCTION ? `./articles/${file}` : `articles/${file}`)).data['tag'] as [string]).filter(tag => tag.toLowerCase() == req.query['tag'].toLowerCase()).length != 0).map(async (value) => {
-    const file = fs.readFileSync(env?.PRODCUTION ? `./articles/${value}` : `articles/${value}`)
+    const file = fs.readFileSync(env?.PRODUCTION ? `./articles/${value}` : `articles/${value}`)
     const meta: any = matter(file).data
     
     const resultGithub: Response = await fetch(`https://github.com/${meta['writer']}`, {

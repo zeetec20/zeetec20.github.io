@@ -68,11 +68,11 @@ export default PortfolioPage
 export async function getServerSideProps() {
   const env = dotenv.config()?.parsed
 
-  const files = fs.readdirSync(env?.PRODCUTION ? './portfolio' : 'portfolio')
+  const files = fs.readdirSync(env?.PRODUCTION ? './portfolio' : 'portfolio')
   let data: any[] = []
 
   await Promise.all(files.map(async (value) => {
-    const file = fs.readFileSync(env?.PRODCUTION ? `./portfolio/${value}` : `portfolio/${value}`)
+    const file = fs.readFileSync(env?.PRODUCTION ? `./portfolio/${value}` : `portfolio/${value}`)
     const meta: any = matter(file).data
 
     data.push({
