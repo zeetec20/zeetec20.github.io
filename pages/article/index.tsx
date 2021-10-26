@@ -6,6 +6,7 @@ import { InferGetServerSidePropsType } from 'next'
 import fs from 'fs'
 import matter from 'gray-matter';
 import moment from 'moment';
+import styles from '../../styles/Article.module.css'
 import Head from 'next/head'
 import NavbarComponent from '../../component/Navbar'
 import FooterComponent from '../../component/Footer'
@@ -33,9 +34,9 @@ const ArticlePage = ({ article }: InferGetServerSidePropsType<typeof getServerSi
 
       <NavbarComponent loading={loading} />
       
-      <Container style={{fontFamily: 'Source Sans Pro', marginTop: '5.5%', minHeight: '550px'}}>
+      <Container className={styles.wrap_list_article} style={{fontFamily: 'Source Sans Pro', marginTop: '5.5%', minHeight: '550px'}}>
         <b><p style={{fontSize: '35px', fontWeight: 'bold'}}>Article.</p></b>
-        <p style={{width: '70%'}}>Sometimes when i&apos;m bored I like writing and this article is very usefull for my noted because I often forget what I learned, maybe my article is not good like medium or dev.to but it&apos;s still worth for your read.</p>
+        <p className={styles.wrap_list_article_description} style={{width: '70%'}}>Sometimes when i&apos;m bored I like writing and this article is very usefull for my noted because I often forget what I learned, maybe my article is not good like medium or dev.to but it&apos;s still worth for your read.</p>
 
         <div style={{marginTop: '4%'}}>
           {listArticle}

@@ -1,6 +1,7 @@
 import { Container} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Head from 'next/head'
+import styles from '../styles/About.module.css'
 import NavbarComponent from '../component/Navbar'
 import FooterComponent from '../component/Footer'
 import { RiFacebookBoxFill, RiGithubFill, RiWhatsappFill, RiInstagramFill, RiLinkedinFill, RiMailFill } from 'react-icons/ri'
@@ -14,7 +15,7 @@ const AboutPage = () => {
 
       <NavbarComponent />
 
-      <Container style={{ fontFamily: 'Source Sans Pro', marginTop: '5.5%', minHeight: '550px' }}>
+      <Container className={styles.wrap} style={{ fontFamily: 'Source Sans Pro', marginTop: '5.5%', minHeight: '550px' }}>
         <b><p style={{ fontSize: '35px', fontWeight: 'bold' }}>About.</p></b>
         <p style={{ width: '70%' }}>Who is Firman ? He is a Good Programmer, he also like cat (especially fat), book (maybe he like social topic). Last I know Firman enthusiastic in 🖥️ Web App and 📱 Mobile App and now learning about Frontend Framework (Next JS). <br /> He located in 🇮🇩 Indonesia exactly in <a href="https://goo.gl/maps/ELwSc5H5W71MF2PWA" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>Banyuwangi</a> and last education firman in <a href="https://goo.gl/maps/TRnoewqCQz3966uv5" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>SMKN 1 Banyuwangi</a></p>
 

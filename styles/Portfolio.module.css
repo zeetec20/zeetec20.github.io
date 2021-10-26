@@ -33,26 +33,20 @@
     }
 }
 
-@media only screen and (max-width: 500px) {
-    .wrap_title {
-        text-align: center;
-    }
-}
-
 @media only screen and (max-width: 570px) {
-    .wrap_list_article {
+    .wrap_list_portfolio {
         max-width: 94%;
     }
 }
 
 @media only screen and (max-width: 760px) {
-    .wrap_list_article_description {
+    .wrap_list_portfolio_description {
         width: 90% !important;
     }
 }
 
 @media only screen and (max-width: 490px) {
-    .wrap_list_article_description {
+    .wrap_list_portfolio_description {
         width: 100% !important;
     }
 }

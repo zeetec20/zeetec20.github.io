@@ -9,7 +9,7 @@ import NavbarComponent from '../../component/Navbar'
 import FooterComponent from '../../component/Footer'
 import ArticleComponent from '../../component/Article'
 import NextError from 'next/error'
-import styles from '../../styles/Article.module.css'
+import styles from '../../styles/Portfolio.module.css'
 import moment from 'moment';
 import ReactMarkdown from 'react-markdown'
 import { Prism as ReactSyntaxHighlighter } from 'react-syntax-highlighter'
@@ -50,7 +50,7 @@ const DetailPortfolioPage = ({ status, meta, article }: InferGetServerSidePropsT
 
       <NavbarComponent />
 
-      <Container className={`text-center ${styles.article_width}`} style={{ fontFamily: 'Source Sans Pro'}}>
+      <Container className={`text-center ${styles.article_width} ${styles.wrap_thumbnail}`} style={{ fontFamily: 'Source Sans Pro'}}>
         <Container className={`position-relative ${styles.thumbnail}`}>
           <Image src={meta['thumbnail']} className='img-thumbnail border-0' layout='fill' objectFit='cover' alt='thumnail article' />
         </Container>
@@ -59,7 +59,7 @@ const DetailPortfolioPage = ({ status, meta, article }: InferGetServerSidePropsT
         <p className={`mt-4 ${styles.description}`} style={{ textAlign: 'center' }}>-- &nbsp; {moment(meta['createdAt'], 'DD-MM-YYYY').format('dddd, MMMM DD YYYY')} &nbsp; | &nbsp; {moment(meta['createdAt'], 'DD-MM-YYYY').fromNow()} &nbsp; --</p>
       </Container>
 
-      <Container className={`${styles.article_width} p-0 pb-1 pe-1 pe-5 ps-5`} style={{ fontFamily: 'Source Sans Pro', marginTop: '6%' }}>
+      <Container className={`${styles.article_width} ${styles.wrap_title} p-0 pb-1 pe-1 pe-5 ps-5`} style={{ fontFamily: 'Source Sans Pro', marginTop: '6%' }}>
         <div className={`border p-0 pb-1 pe-1 border-top-0 border-start-0`} style={{ fontFamily: 'Source Sans Pro', marginTop: '6%' }}>
           <div className="border p-3 pb-1">
             <p>App : &nbsp; <b><a href={meta['app']} target="_blank" rel="noopener noreferrer">{meta['app']}</a></b> </p>
@@ -68,7 +68,7 @@ const DetailPortfolioPage = ({ status, meta, article }: InferGetServerSidePropsT
         </div>
       </Container>
 
-      <Container className={`${styles.article_width}`} style={{ fontFamily: 'Source Sans Pro', marginTop: '40px' }}>
+      <Container className={`${styles.article_width} ${styles.wrap_content}`} style={{ fontFamily: 'Source Sans Pro', marginTop: '40px' }}>
         <Markdown markdown={article!} />
       </Container>
 

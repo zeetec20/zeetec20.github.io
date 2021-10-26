@@ -6,6 +6,7 @@ import { InferGetServerSidePropsType } from 'next'
 import fs from 'fs'
 import matter from 'gray-matter';
 import Head from 'next/head'
+import styles from '../../styles/Portfolio.module.css'
 import NavbarComponent from '../../component/Navbar'
 import FooterComponent from '../../component/Footer'
 import PortfolioComponent from '../../component/Portfolio'
@@ -47,9 +48,9 @@ const PortfolioPage = ({ portfolio }: InferGetServerSidePropsType<typeof getServ
 
       <NavbarComponent loading={loading} />
 
-      <Container style={{ fontFamily: 'Source Sans Pro', marginTop: '5.5%', minHeight: '550px' }}>
+      <Container className={styles.wrap_list_portfolio} style={{ fontFamily: 'Source Sans Pro', marginTop: '5.5%', minHeight: '550px' }}>
         <b><p style={{ fontSize: '35px', fontWeight: 'bold' }}>Portfolio.</p></b>
-        <p style={{ width: '70%' }}>This page is for a showcase of my project not only that I will add personal project or just result from my learning. If you are interested in making a project like on my showcase you can <Link href='/about'><a>contact</a></Link> me we can realize together.</p>
+        <p className={styles.wrap_list_portfolio_description} style={{ width: '70%' }}>This page is for a showcase of my project not only that I will add personal project or just result from my learning. If you are interested in making a project like on my showcase you can <span onClick={() => setloading(true)}><Link href='/about'><a>contact</a></Link></span> me we can realize together.</p>
 
         <div style={{ marginTop: '4%' }}>
           {listPortfolioComponent}
