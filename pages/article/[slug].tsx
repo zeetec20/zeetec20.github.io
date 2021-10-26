@@ -60,7 +60,7 @@ const DetailArticlePage = ({ status, meta, article }: InferGetServerSidePropsTyp
 
       <Container className={`text-center ${styles.article_width} ${styles.wrap_thumbnail}`} style={{ fontFamily: 'Source Sans Pro'}}>
         <Container className={`position-relative ${styles.thumbnail}`}>
-          <img src={meta['thumbnail']} className='img-thumbnail border-0' style={{objectFit: 'cover'}} alt='thumnail article' />
+          <Image src={meta['thumbnail']} className='img-thumbnail border-0' layout='fill' objectFit='cover' alt='thumnail article' />
         </Container>
         <b><p style={{ fontSize: '35px', fontWeight: 'bold' }}>{meta['title']}</p></b>
 
@@ -71,7 +71,7 @@ const DetailArticlePage = ({ status, meta, article }: InferGetServerSidePropsTyp
 
       <Container className={`${styles.article_width} ${styles.wrap_title}`} style={{ fontFamily: 'Source Sans Pro', marginTop: '6%' }}>
         <div className='mt-1'>
-          <img className='rounded-circle' width='45px' height='45px' src={meta['writer-profile']} alt="" />
+          <Image className='rounded-circle' width='45px' height='45px' src={meta['writer-profile']} alt="" />
           <p className='align-middle ms-3' style={{ display: 'inline-block', fontSize: '22px', fontWeight: 'bold', color: process.env.color3, marginBottom: '35px' }}>{meta['writer-name']}</p>
         </div>
       </Container>
