@@ -34,13 +34,13 @@ class Article extends React.Component<propArticle> {
               <div className="row card-body">
                 <Col md={4}>
                   <div className='bg-dark' style={{ position: 'relative', borderRadius: '10px', width: '100%', height: '100%' }}>
-                    <Image className='img-thumbnail border-0' layout='fill' objectFit='cover' src={prop.image} alt="sans" />
+                    <img className='img-thumbnail border-0' style={{objectFit: 'cover'}} src={prop.image} alt="sans"/>
                   </div>
 
                 </Col>
                 <Col md={8}>
                   <div className='mt-1'>
-                    <Image className='rounded-circle' width='25px' height='25px' src={prop.profile} alt="" />
+                    <img className='rounded-circle' width='25px' height='25px' src={prop.profile} alt="" />
                     <p className='align-middle ms-1' style={{ display: 'inline-block', fontSize: '14px', fontWeight: 'bold', color: process.env.color3 }}>{prop.name}</p>
                   </div>
 

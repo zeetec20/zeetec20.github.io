@@ -52,7 +52,7 @@ const DetailPortfolioPage = ({ status, meta, article }: InferGetServerSidePropsT
 
       <Container className={`text-center ${styles.article_width} ${styles.wrap_thumbnail}`} style={{ fontFamily: 'Source Sans Pro'}}>
         <Container className={`position-relative ${styles.thumbnail}`}>
-          <Image src={meta['thumbnail']} className='img-thumbnail border-0' layout='fill' objectFit='cover' alt='thumnail article' />
+          <img src={meta['thumbnail']} className='img-thumbnail border-0' style={{objectFit: 'cover'}} alt='thumnail article' />
         </Container>
         <b><p style={{ fontSize: '35px', fontWeight: 'bold' }}>{meta['title']}</p></b>
 
