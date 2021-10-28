@@ -16,6 +16,7 @@ import { xonokai } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import Image from 'next/image'
 import Link from 'next/link'
 import dotenv from 'dotenv'
+import rehypeRaw from 'rehype-raw'
 
 const Markdown = (props: { markdown: string }) => {
   return <ReactMarkdown components={{
@@ -33,7 +34,7 @@ const Markdown = (props: { markdown: string }) => {
         </code>
       )
     }
-  }}
+  }} rehypePlugins={[rehypeRaw]}
   >{props.markdown}</ReactMarkdown>
 }
 
