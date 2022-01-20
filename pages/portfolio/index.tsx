@@ -35,7 +35,7 @@ const PortfolioPage = ({ portfolio }: {portfolio: any[]}) => {
   const listPortfolioComponent = portfolioComponent.map((com, key) => {
     return (
       <Row key={key}>
-        {com.map((com, key) => <Col key={key} md={6}>{com}</Col>)}
+        {com.map((com, key) => <Col key={key} md={6} className="mb-5">{com}</Col>)}
       </Row>
     )
   })
