@@ -1,7 +1,7 @@
 ---
 title: Tulung
-description: risus eu lectus a consectetur aliquam nullam enim tellus urna nunc sagittis aenean aliquam ullamcorper consectetur dictumst sit, placerat eget lobortis eget elit nibh blandit scelerisque consectetur condimentum diam tempor. nisl erat semper gravida tempor aliquam suscipit a viverra molestie sit porta cras ultricies, fermentum habitasse sit semper cum eu eget lacus purus viverra cursus porttitor nisi nisl.
-thumbnail: https://cdn.thewirecutter.com/wp-content/media/2021/03/allinonecomputers-2048px-00116-2x3-1.jpg?auto=webp&quality=60&crop=1.91:1&width=1200
+description: Tulung is a mobile app with the goal to contribute on social to help many people and make social to have a habit of helping others.
+thumbnail: /portfolio/tulung/thumbnail.png
 createdAt: 20-1-2022
 app: https://play.google.com/store/apps/details?id=com.pixeldev.tulung
 tag: [Mobile Developer, Android, Flutter, Dart, Firebase, Firestore]
@@ -15,7 +15,7 @@ Tulung is a mobile app with the goal to contribute on social to help many people
 
 ## **User Interface**
 
- These are some pictures from Tulung app that can give you an imagining of the app.
+These are some pictures from Tulung app that can give you an imagining of the app.
 
 <img class="" src="/portfolio/tulung/image1.png" alt="UI Tulung" style="display: inline-block;">
 <img class="" src="/portfolio/tulung/image2.png" alt="UI Tulung" style="display: inline-block;">

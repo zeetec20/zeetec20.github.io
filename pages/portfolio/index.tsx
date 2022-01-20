@@ -21,13 +21,13 @@ const PortfolioPage = ({ portfolio }: {portfolio: any[]}) => {
     if (((key + 1) % 2) == 0) {
       portfolioComponent[portfolioComponent.length - 1].push(
         <div key={key} onClick={() => setloading(true)}>
-          <PortfolioComponent title={value['meta']['title']} description={value['meta']['description']} slug={value['slug']} tag={value['meta']['tag']} />
+          <PortfolioComponent title={value['meta']['title']} description={value['meta']['description']} slug={value['slug']} tag={value['meta']['tag']} thumbnail={value['meta']['thumbnail']} />
         </div>
       )
     } else {
       portfolioComponent.push([
         <div key={key} onClick={() => setloading(true)}>
-          <PortfolioComponent title={value['meta']['title']} description={value['meta']['description']} slug={value['slug']} tag={value['meta']['tag']} />
+          <PortfolioComponent title={value['meta']['title']} description={value['meta']['description']} slug={value['slug']} tag={value['meta']['tag']} thumbnail={value['meta']['thumbnail']} />
         </div>
       ])
     }
