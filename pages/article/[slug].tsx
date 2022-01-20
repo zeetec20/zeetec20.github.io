@@ -98,7 +98,6 @@ export async function getStaticPaths() {
     article.push(file.split('.')[0])
   })
 
-  console.log(article)
   return {
     paths: article.map(article => { return {params: {slug: article.toLowerCase()}}}),
     fallback: false,

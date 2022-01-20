@@ -41,7 +41,7 @@ const Markdown = (props: { markdown: string }) => {
 const DetailPortfolioPage = ({ status, meta, article }: {status: any, meta: any, article: any}) => {
   if (status == 404) return <NextError statusCode={status} />
 
-  let tags = (meta['tag'] as string[]).map((tag, key) => <Link href={`/article/tag/${tag.toLowerCase()}`} key={key} passHref><span style={{cursor: 'pointer'}}><ArticleComponent.Tag tag={tag} className={styles.tag} /></span></Link>)
+  let tags = (meta['tag'] as string[]).map((tag, key) => <Link href={`/portfolio/tag/${tag.toLowerCase()}`} key={key} passHref><span style={{cursor: 'pointer'}}><ArticleComponent.Tag tag={tag} className={styles.tag} /></span></Link>)
 
   return (
     <>
