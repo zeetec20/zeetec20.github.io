@@ -21,11 +21,11 @@ const AboutPage = () => {
 
         <b><p className='mt-5' style={{ fontSize: '25px', fontWeight: 'bold' }}>Used Technology</p></b>
         <p style={{ width: '70%' }}>
-          Web Development (<a href="https://www.djangoproject.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>Django</a>, <a href="https://laravel.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>Laravel</a>, <a href="https://www.fastify.io" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>Fastify</a>)
+          Web Development (<a href="https://www.djangoproject.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>Django</a>, <a href="https://laravel.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>Laravel</a>, <a href="https://www.fastify.io" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>Fastify</a>, <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>Next</a>)
           <br />
           Mobile Development (<a href="https://flutter.dev" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>Flutter</a>)
           <br />
-          Programming Language (Python, Javascript, Dart, PHP)
+          Programming Language (<a href="https://www.python.org" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>Python</a>, <a href="https://www.javascript.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>Javascript</a>, <a href="https://dart.dev" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>Dart</a>, <a href="https://www.php.net" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>PHP</a>)
         </p>
 
         <b><p className='mt-5' style={{ fontSize: '25px', fontWeight: 'bold' }}>Want discuss project or just talk ?</p></b>
