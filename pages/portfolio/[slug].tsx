@@ -61,8 +61,8 @@ const DetailPortfolioPage = ({ status, meta, article }: {status: any, meta: any,
       </Container>
 
       <Container className={`${styles.article_width} ${styles.wrap_title} p-0 pb-1 pe-1 pe-5 ps-5`} style={{ fontFamily: 'Source Sans Pro', marginTop: '6%' }}>
-        <div className={`border p-0 pb-1 pe-1 border-top-0 border-start-0`} style={{ fontFamily: 'Source Sans Pro', marginTop: '6%' }}>
-          <div className="border p-3 pb-1">
+        <div className={`border p-0 pb-1 pe-1 border-top-0 border-start-0`} style={{ fontFamily: 'Source Sans Pro', marginTop: '6%'}}>
+          <div className="border p-3 pb-1" style={{overflow: 'auto'}}>
             <p>App : &nbsp; <b><a href={meta['app']} target="_blank" rel="noopener noreferrer">{meta['app']}</a></b> </p>
             <p>Tag : &nbsp; {tags}</p>
           </div>

@@ -17,10 +17,12 @@ Tulung is a mobile app with the goal to contribute on social to help many people
 
 These are some pictures from Tulung app that can give you an imagining of the app.
 
-<img class="" src="/portfolio/tulung/image1.png" alt="UI Tulung" style="display: inline-block;">
-<img class="" src="/portfolio/tulung/image2.png" alt="UI Tulung" style="display: inline-block;">
-<img class="" src="/portfolio/tulung/image3.png" alt="UI Tulung" style="display: inline-block;">
-<img class="" src="/portfolio/tulung/image4.png" alt="UI Tulung" style="display: inline-block;">
+<div align="middle">
+    <img class="" src="/portfolio/tulung/image1.png" alt="UI Tulung" style="display: inline-block;">
+    <img class="" src="/portfolio/tulung/image2.png" alt="UI Tulung" style="display: inline-block;">
+    <img class="" src="/portfolio/tulung/image3.png" alt="UI Tulung" style="display: inline-block;">
+    <img class="" src="/portfolio/tulung/image4.png" alt="UI Tulung" style="display: inline-block;">
+</div>
 
 <br/>
 <br/>
