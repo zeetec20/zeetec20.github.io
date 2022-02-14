@@ -6,7 +6,7 @@ function Layout({ children }: any) {
   const meta_url = process.env.domain
   const meta_name = 'Firman Lestari ✋'
   const meta_description = 'Is it my personal website build with next js, I make this site for sharing about technology and my learning, there are also showcase my project.'
-  const meta_image = 'https://images.unsplash.com/photo-1644675530507-f4c9e214dd04?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=100'
+  const meta_image = `${process.env.domain}/meta_image.png`
   
   return (
     <>
