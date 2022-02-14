@@ -7,6 +7,7 @@ module.exports = {
   env: {
     color1: '#ffffff',
     color2: '#000000',
-    color3: '#6b6b6b'
+    color3: '#6b6b6b',
+    domain: 'http://localhost:3000'
   }
 }

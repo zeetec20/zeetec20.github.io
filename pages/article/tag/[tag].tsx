@@ -19,6 +19,7 @@ const ArticleTagPage = ({ article }: {article: any[]}) => {
 
   const router = useRouter()
   const tag = router.query['tag']!.toString().slice(0, 1).toUpperCase() + router.query['tag']!.toString().slice(1)
+  const meta_name = `Article (${tag}) | Firman ✋`
 
   const listArticle = article.map((value, key) => {
     const createdAt: string = moment(value['meta']['createdAt'], 'DD-MM-YYYY').format('dddd, MMMM DD YYYY')
@@ -32,7 +33,13 @@ const ArticleTagPage = ({ article }: {article: any[]}) => {
   return (
     <>
       <Head>
-        <title>Article ({tag}) | Firman ✋</title>
+        <title>{meta_name}</title>
+
+        <meta itemProp="name" content={meta_name}/>
+
+        <meta property="og:title" content={meta_name}/>
+
+        <meta name="twitter:title" content={meta_name}/>
       </Head>
 
       <NavbarComponent loading={loading} />

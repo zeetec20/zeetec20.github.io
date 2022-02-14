@@ -14,7 +14,9 @@ import Link from 'next/link'
 import dotenv from 'dotenv'
 // import Image from 'next/image'
 
-const ArticlePage = ({ article }: {article: any[]}) => {
+const ArticlePage = ({ article }: { article: any[] }) => {
+  const meta_name = 'Article | Firman ✋'
+  const meta_description = ''
   const [loading, setloading] = useState(false)
 
   const listArticle = article.map((value, key) => {
@@ -29,7 +31,13 @@ const ArticlePage = ({ article }: {article: any[]}) => {
   return (
     <>
       <Head>
-        <title>Article | Firman ✋</title>
+        <title>{meta_name}</title>
+
+        <meta itemProp="name" content={meta_name}/>
+
+        <meta property="og:title" content={meta_name}/>
+
+        <meta name="twitter:title" content={meta_name}/>
       </Head>
 
       <NavbarComponent loading={loading} />

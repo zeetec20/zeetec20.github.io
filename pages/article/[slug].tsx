@@ -40,6 +40,9 @@ const Markdown = (props: { markdown: string }) => {
 }
 
 const DetailArticlePage = ({ status, meta, article }: {status: any, meta: any, article: any}) => {
+  const meta_name = `${meta['title']} | Firman ✋`
+  const meta_description = meta['description']
+  const meta_image = `${process.env.domain}${meta['thumbnail']}`
   const [loading, setloading] = useState(false)
   if (status == 404) return <NextError statusCode={status} />
 
@@ -54,7 +57,21 @@ const DetailArticlePage = ({ status, meta, article }: {status: any, meta: any, a
   return (
     <>
       <Head>
-        <title>{meta['title']} | Firman ✋</title>
+        <title>{meta_name}</title>
+
+        <meta name="description" content={meta_description}/>
+
+        <meta itemProp="name" content={meta_name}/>
+        <meta itemProp="description" content={meta_description}/>
+        <meta itemProp="image" content={meta_image}/>
+
+        <meta property="og:title" content={meta_name}/>
+        <meta property="og:description" content={meta_description}/>
+        <meta property="og:image" content={meta_image}/>
+
+        <meta name="twitter:title" content={meta_name}/>
+        <meta name="twitter:description" content={meta_description}/>
+        <meta name="twitter:image" content={meta_image}></meta>
       </Head>
 
       <NavbarComponent loading={loading} />

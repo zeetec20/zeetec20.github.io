@@ -7,10 +7,17 @@ import FooterComponent from '../component/Footer'
 import { RiFacebookBoxFill, RiGithubFill, RiWhatsappFill, RiInstagramFill, RiLinkedinFill, RiMailFill } from 'react-icons/ri'
 
 const AboutPage = () => {
+  const meta_name = 'About | Firman ✋'
   return (
     <>
       <Head>
-        <title>About | Firman ✋</title>
+        <title>{meta_name}</title>
+
+        <meta itemProp="name" content={meta_name}/>
+
+        <meta property="og:title" content={meta_name}/>
+
+        <meta name="twitter:title" content={meta_name}/>
       </Head>
 
       <NavbarComponent />
