@@ -13,11 +13,12 @@ import PortfolioComponent from '../../../component/Portfolio'
 import dotenv from 'dotenv'
 // import Image from 'next/image'
 
-const PortfolioTagPage = ({ portfolio }: {portfolio: any[]}) => {
+const PortfolioTagPage = ({ portfolio }: { portfolio: any[] }) => {
   const [loading, setloading] = useState(false)
 
   const router = useRouter()
   const tag = router.query['tag']!.toString().slice(0, 1).toUpperCase() + router.query['tag']!.toString().slice(1)
+  const meta_name = `Article (${tag}) | Firman ✋`
 
   const listArticle = portfolio.map((value, key) => {
     return (
@@ -30,7 +31,13 @@ const PortfolioTagPage = ({ portfolio }: {portfolio: any[]}) => {
   return (
     <>
       <Head>
-        <title>Article ({tag}) | Firman ✋</title>
+        <title>{meta_name}</title>
+
+        <meta itemProp="name" content={meta_name}/>
+
+        <meta property="og:title" content={meta_name}/>
+
+        <meta name="twitter:title" content={meta_name}/>
       </Head>
 
       <NavbarComponent loading={loading} />

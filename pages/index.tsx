@@ -29,10 +29,6 @@ const HomePage = ({ article }: {article: any[]}) => {
 
   return (
     <>
-      <Head>
-        <title>Firman Lestari ✋</title>
-      </Head>
-
       <NavbarComponent loading={loading}/>
 
       <Container className={styles.wrap} style={{ marginTop: '5.5%' }}>

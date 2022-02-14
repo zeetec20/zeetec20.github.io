@@ -13,7 +13,8 @@ import Link from 'next/link'
 import dotenv from 'dotenv'
 // import Image from 'next/image'
 
-const PortfolioPage = ({ portfolio }: {portfolio: any[]}) => {
+const PortfolioPage = ({ portfolio }: { portfolio: any[] }) => {
+  const meta_name = 'Portfolio | Firman ✋'
   const [loading, setloading] = useState(false)
 
   let portfolioComponent: Array<Array<any>> = []
@@ -43,7 +44,13 @@ const PortfolioPage = ({ portfolio }: {portfolio: any[]}) => {
   return (
     <>
       <Head>
-        <title>Portfolio | Firman ✋</title>
+        <title>{meta_name}</title>
+
+        <meta itemProp="name" content={meta_name}/>
+
+        <meta property="og:title" content={meta_name}/>
+
+        <meta name="twitter:title" content={meta_name}/>
       </Head>
 
       <NavbarComponent loading={loading} />
