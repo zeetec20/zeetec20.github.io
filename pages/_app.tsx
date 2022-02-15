@@ -34,15 +34,8 @@ function Layout({ children }: any) {
         <meta name="twitter:title" content={meta_name}/>
         <meta name="twitter:description" content={meta_description}/>
         <meta name="twitter:image" content={meta_image}></meta>
-
-        <script dangerouslySetInnerHTML={{__html: `(function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:${2831385},hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`}} />
+        
+        <script async src="https://cdn.splitbee.io/sb.js"></script>
       </Head>
       {children}
     </>
