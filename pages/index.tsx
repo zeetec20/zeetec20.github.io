@@ -36,7 +36,7 @@ const HomePage = ({ article }: {article: any[]}) => {
         <p style={{ fontFamily: 'ubuntu', fontSize: '20px', width: '70%' }}>You can call me firman, I&apos; am Software Engineer were focused on 🖥️ web app with technology (Django, Laravel, Next) and 📱 mobile app with technology (Flutter) </p>
 
         <div onClick={() => setloading(true)}>
-          <Link href='about' passHref>
+          <Link href='/about' passHref>
             <Button className='mt-4 py-2 button-about' variant='outline-dark'>More Abaut Me</Button>
           </Link>
         </div>
