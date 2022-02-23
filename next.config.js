@@ -8,6 +8,6 @@ module.exports = {
     color1: '#ffffff',
     color2: '#000000',
     color3: '#6b6b6b',
-    domain: 'http://localhost:3000'
+    domain: 'https://firmanlestari.vercel.app'
   }
 }
