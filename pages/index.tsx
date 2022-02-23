@@ -35,11 +35,10 @@ const HomePage = ({ article }: {article: any[]}) => {
         <b><p style={{ fontFamily: 'Source Sans Pro', fontSize: '40px' }}>I&apos; am Firman Justisio Lestari</p></b>
         <p style={{ fontFamily: 'ubuntu', fontSize: '20px', width: '70%' }}>You can call me firman, I&apos; am Software Engineer were focused on 🖥️ web app with technology (Django, Laravel, Next) and 📱 mobile app with technology (Flutter) </p>
 
-        <div onClick={() => setloading(true)}>
-          <Link href='/about' passHref>
-            <Button className='mt-4 py-2 button-about' variant='outline-dark'>More Abaut Me</Button>
-          </Link>
-        </div>
+        
+        <Link href='/about' passHref>
+          <Button onClick={() => setloading(true)} className='mt-4 py-2 button-about' variant='outline-dark'>More About Me</Button>
+        </Link>
       </Container>
 
       <Container className={styles.wrap} style={{ marginTop: '8%', fontFamily: 'Source Sans Pro' }}>
