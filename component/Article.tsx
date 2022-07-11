@@ -27,7 +27,7 @@ class Article extends React.Component<propArticle> {
 
     let tags = prop.tag.map((tag, key) => <Article.Tag key={key} tag={tag} />)
     return (
-      <Row>
+      <Row className='article'>
         <Col md={12}>
           <Link href={`/article/${prop.slug}`} passHref={true}>
             <Card className='card-article'>
@@ -36,7 +36,6 @@ class Article extends React.Component<propArticle> {
                   <div className='bg-dark' style={{ position: 'relative', borderRadius: '10px', width: '100%', height: '100%' }}>
                     <Image className='img-thumbnail border-0' layout='fill' objectFit='cover' src={prop.image} alt="sans" />
                   </div>
-
                 </Col>
                 <Col md={8}>
                   <div className='mt-1'>
