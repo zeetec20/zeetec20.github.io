@@ -1,6 +1,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+:root {
+    --background-dark: #191a1b;
+    --background-dark-01: rgba(25, 26, 27, 0.1);
+    --background-light: white;
+    --background-light-01: rgba(255, 255, 255, 0.1);
+    --text-dark: #212529;
+}
+
+.theme-dark {
+    background-color: var(--background-dark);
+    color: var(--background-light);
+}
+
+.theme-light {
+    /* background-color: var(--background-light); */
+    color: var(--text-dark);
+}
+
+.theme-dark .theme-nav, 
+.theme-dark .theme-brand,
+.theme-dark .button-about {
+    color: var(--background-light) !important;
+}
+
+.theme-dark .button-about {
+    border-color: var(--background-light) !important;
+}
+
+.theme-light .theme-nav, 
+.theme-light .theme-brand,
+.theme-light .button-about {
+    color: var(--text-dark) !important;
+}
+
+.theme-light .button-about {
+    border-color: var(--text-dark) !important;
+}
+
+.theme-dark .article .card {
+    border-color: var(--background-light);
+    background-color: var(--background-dark) !important;
+}
+
+.theme-light .article .card {
+    /* border-color: var(--background-dark); */
+    background-color: var(--background-light) !important;
+}
+
+.theme-dark .footer {
+    background-color: var(--background-dark);
+}
+
+.theme-light .footer {
+    background-color: var(--background-light);
+}
+
+.button-theme {
+    outline: rgba(17, 110, 250, 0.4) solid 4px !important;
+    box-shadow: none !important;
+}
+
+.button-theme:hover {
+    background-color: var(--background-dark-01);
+    transition: background-color 0.4s ease;
+}
+
+.theme-dark .button-theme:hover {
+    background-color: var(--background-light-01);
+}
+
+.theme-dark .card-portfolio {
+    background-color: var(--background-dark);
+    border-color: var(--background-light);
+}
+
 .socialmedia {
     transition: all 0.35s;
     color: black;
@@ -29,7 +104,7 @@
 }
 
 .card-article:hover, .card-portfolio:hover {
-    border-color: #116efa;
+    border-color: #116efa !important;
     transition: all 0.35s;
 }
 
@@ -37,14 +112,12 @@
     transition: all 0.35s;
     background-color: transparent;
     border-color: black !important;
-    color: black !important;
 }
 
 .button-about:hover {
     transition: all 0.35s;
     background-color: transparent !important;
     border-color: #116efa !important;
-    color: black !important;
 }
 
 .button-about:focus {
