@@ -1,4 +1,4 @@
-import ThemeService from '@/services/ThemeService'
+import ThemeService from '@/services/themeService'
 import { ThemeMode } from '@/types'
 import {atom, useRecoilValue} from 'recoil'
 
