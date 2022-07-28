@@ -1,10 +1,9 @@
 import ThemeService from '@/services/themeService'
-import { ThemeMode } from '@/types'
-import {atom, useRecoilValue} from 'recoil'
+import {atom} from 'recoil'
 
 const themeService = new ThemeService()
 
 export const theme = atom({
-    key: 'theme',
+    key: `theme_${(new Date()).toISOString()}`,
     default: themeService.getThemeMode()
 })

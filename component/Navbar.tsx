@@ -58,7 +58,7 @@ const NavbarComponent = (prop: propType) => {
               <div>
                 <button type="button" className="btn button-theme p-0 rounded-circle" style={{width: 45, height: 43, marginLeft: '15px'}} onClick={() => switchThemeMode(theme, setTheme)}>
                   <div style={{paddingTop: '5px'}}>
-                    <Image src={theme == ThemeMode.dark ? nightIcon : dayIcon} width={25} height={25} alt='' />
+                    <Image className='button-theme-icon' src={theme == ThemeMode.dark ? nightIcon : dayIcon} width={25} height={25} alt='' />
                   </div>
                 </button>
               </div>
