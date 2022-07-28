@@ -1,12 +1,12 @@
 ---
-title: How I make my GitHub profile look cool with markdown
-description: Is it my first article on this site, what I write in this article ? About github profile and markdown, more precisely make your github more cool. In this article you just do step for to get the gol, is easy. With github profile you can describe yourself and your skill in github
+title: How I Make my GitHub Profile Look Cool With Markdown
+description: Is it my first article on this site, what I write in this article ? About github profile and markdown, more precisely make your github more cool. In this article you just do step for to get the gol, is easy. With github profile you can describe yourself and your skill in github.
 thumbnail: /article/how-i-make-my-github-profile-look-cool-with-markdown/thumbnail.jpg
 createdAt: 28-10-2021
 writer: zeetec20
 tag: [GitHub, Markdown]
 ---
-# **How I make my GitHub profile look cool with markdown**
+# **How I Make my GitHub Profile Look Cool With Markdown**
 
 <br>
 
@@ -126,12 +126,3 @@ It is README.md I use
   <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=zeetec20&theme=light&hide_langs_below=1" />
 </a>
 ```
-
-<br>
-<br>
-
-<div align="middle">
-
-**I hope this article can helps! If you want give me some feedback you can <a href="/about" target="_blank" rel="noopener noreferrer">contact</a> me!**
-
-</div>
