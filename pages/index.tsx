@@ -74,10 +74,7 @@ export const getStaticProps = async (context: any) => {
     const path_thumbnail = meta['thumbnail']
 
     data.push({
-      'meta': {
-        'thumbnail': require(`../public/article/${value.split('.')[0]}/${path_thumbnail.split('/').slice(-1)}`),
-        ...meta
-      },
+      'meta': meta,
       'slug': value.split('.')[0],
       'content': matter(file).content
     })
