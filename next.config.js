@@ -3,6 +3,7 @@ module.exports = {
   reactStrictMode: true,
   images: {
     domains: ['assets.example.com', 'cdn.thewirecutter.com', 'avatars.githubusercontent.com'],
+    disableStaticImages: false
   },
   env: {
     color1: '#ffffff',

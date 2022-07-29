@@ -34,7 +34,7 @@ class Article extends React.Component<propArticle> {
               <div className="row card-body">
                 <Col md={4}>
                   <div className='bg-dark' style={{ position: 'relative', borderRadius: '10px', width: '100%', height: '100%' }}>
-                    <Image className='img-thumbnail border-0' layout='fill' objectFit='cover' src={prop.image} alt="sans" />
+                    <Image className='img-thumbnail border-0' layout='fill' placeholder='blur' objectFit='cover' src={prop.image} alt="" />
                   </div>
                 </Col>
                 <Col md={8}>

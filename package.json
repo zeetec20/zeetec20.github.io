@@ -12,6 +12,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mdx-js/loader": "^2.1.2",
+    "@next/mdx": "^12.2.3",
     "@react-spring/web": "^9.4.5",
     "@reduxjs/toolkit": "^1.8.3",
     "@rena.to/github-blog": "^0.4.1",
@@ -23,6 +25,7 @@
     "gray-matter": "^4.0.3",
     "moment": "^2.29.1",
     "next": "11.1.0",
+    "next-images": "^1.8.4",
     "next-redux-wrapper": "^7.0.5",
     "osmosis": "^1.1.10",
     "react": "17.0.2",

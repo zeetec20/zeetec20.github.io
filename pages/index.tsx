@@ -5,11 +5,11 @@ import { useEffect, useState } from 'react';
 import fs from 'fs'
 import matter from 'gray-matter';
 import moment from 'moment';
-import styles from '../styles/Home.module.css'
+import styles from '@/styles/Home.module.css'
 import Head from 'next/head'
-import NavbarComponent from '../component/Navbar'
-import FooterComponent from '../component/Footer'
-import ArticleComponent from '../component/Article'
+import NavbarComponent from '@/component/Navbar'
+import FooterComponent from '@/component/Footer'
+import ArticleComponent from '@/component/Article'
 import Link from 'next/link'
 import dotenv from 'dotenv'
 
@@ -71,9 +71,13 @@ export const getStaticProps = async (context: any) => {
 
     meta['writer-profile'] = 'https://avatars.githubusercontent.com/u/' + profile
     meta['writer-name'] = name
+    const path_thumbnail = meta['thumbnail']
 
     data.push({
-      'meta': meta,
+      'meta': {
+        'thumbnail': require(`../public/article/${value.split('.')[0]}/${path_thumbnail.split('/').slice(-1)}`),
+        ...meta
+      },
       'slug': value.split('.')[0],
       'content': matter(file).content
     })
