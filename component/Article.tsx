@@ -3,6 +3,7 @@ import {Row, Col, Card } from 'react-bootstrap'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import ImageShimmer from './ImageShimmer'
 
 interface propArticle {
   profile: string,
@@ -33,14 +34,14 @@ class Article extends React.Component<propArticle> {
             <Card className='card-article'>
               <div className="row card-body">
                 <Col md={4}>
-                  <div className='bg-dark' style={{ position: 'relative', borderRadius: '10px', width: '100%', height: '100%' }}>
-                    <Image className='img-thumbnail border-0' layout='fill' placeholder='blur' objectFit='cover' src={prop.image} alt="" />
+                  <div className='bg-dark' style={{ position: 'relative', borderRadius: '10px', width: '100%', height: '100%'}}>
+                    <ImageShimmer className='img-thumbnail border-0' layout='fill' placeholder='blur' objectFit='cover' src={prop.image} alt="" />
                   </div>
                 </Col>
                 <Col md={8}>
-                  <div className='mt-1'>
-                    <Image className='rounded-circle' width='25px' height='25px' src={prop.profile} alt="" />
-                    <p className='align-middle ms-1' style={{ display: 'inline-block', fontSize: '14px', fontWeight: 'bold', color: process.env.color3 }}>{prop.name}</p>
+                  <div className='mt-1' style={{display: 'flex'}}>
+                    <ImageShimmer className='rounded-circle' style={{width: '25px', height: '25px'}} src={prop.profile} alt="" />
+                    <p className='align-middle' style={{ display: 'inline-block', fontSize: '14px', fontWeight: 'bold', color: process.env.color3, marginTop: '2px', marginLeft: '32px'}}>{prop.name}</p>
                   </div>
 
                   <b><p className="card-title" style={{ fontSize: '30px' }}>{prop.title}</p></b>

@@ -1,6 +1,7 @@
 import {Card } from 'react-bootstrap'
 import Link from 'next/link'
 import Image from 'next/image'
+import ImageShimmer from './ImageShimmer'
 
 interface propPortfolio {
   thumbnail: string,
@@ -18,7 +19,7 @@ const Portfolio = (prop: propPortfolio) => {
       <Card className='card-portfolio'>
         <div className='p-3 pb-0'>
           <div style={{width: '100%', height: 'clamp(330px, 25vw, 400px)', position: 'relative', borderRadius: '10px', overflow: 'hidden'}}>
-            <Image className='card-img-top' alt='' placeholder='blur' layout='fill' objectFit='cover' src={prop.thumbnail} />
+            <ImageShimmer className='card-img-top' alt='' placeholder='blur' layout='fill' objectFit='cover' src={prop.thumbnail} />
           </div>
         </div>
         <Card.Body>

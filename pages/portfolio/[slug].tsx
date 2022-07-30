@@ -17,6 +17,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import dotenv from 'dotenv'
 import rehypeRaw from 'rehype-raw'
+import ImageShimmer from '@/component/ImageShimmer';
 
 const Markdown = (props: { markdown: string }) => {
   return <ReactMarkdown components={{
@@ -70,7 +71,7 @@ const DetailPortfolioPage = ({ status, meta, article }: {status: any, meta: any,
 
       <Container className={`text-center ${styles.article_width} ${styles.wrap_thumbnail}`} style={{ fontFamily: 'Source Sans Pro'}}>
         <Container className={`position-relative ${styles.thumbnail}`}>
-          <Image src={meta['thumbnail']} className='img-thumbnail border-0' layout='fill' objectFit='cover' alt='thumnail article' />
+          <ImageShimmer placeholder='blur' src={meta['thumbnail']} className='img-thumbnail border-0' layout='fill' objectFit='cover' alt='thumnail article' />
         </Container>
         <b><p style={{ fontSize: '35px', fontWeight: 'bold' }}>{meta['title']}</p></b>
 

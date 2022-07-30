@@ -56,7 +56,6 @@ export default HomePage
 export const getStaticProps = async (context: any) => {
   const env = dotenv.config()?.parsed
   const files = fs.readdirSync(env?.PRODUCTION ? './articles' : 'articles')
-  console.log(env?.PRODUCTION ? './articles' : 'articles')
   let data: any[] = []
 
   await Promise.all(files.map(async (value) => {
@@ -74,7 +73,9 @@ export const getStaticProps = async (context: any) => {
     const path_thumbnail = meta['thumbnail']
 
     data.push({
-      'meta': meta,
+      'meta': {
+        ...meta,
+      },
       'slug': value.split('.')[0],
       'content': matter(file).content
     })
