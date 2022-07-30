@@ -19,7 +19,6 @@ import Link from 'next/link'
 import dotenv from 'dotenv'
 import rehypeRaw from 'rehype-raw'
 import ImageShimmer from '@/component/ImageShimmer';
-import {MDXProvider} from '@mdx-js/react'
 
 const Markdown = (props: { markdown: string }) => {
   // return <ReactMarkdown renderers={customRenderers}>{props.markdown}</ReactMarkdown>

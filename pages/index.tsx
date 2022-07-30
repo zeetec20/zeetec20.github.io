@@ -70,7 +70,6 @@ export const getStaticProps = async (context: any) => {
 
     meta['writer-profile'] = 'https://avatars.githubusercontent.com/u/' + profile
     meta['writer-name'] = name
-    const path_thumbnail = meta['thumbnail']
 
     data.push({
       'meta': {
