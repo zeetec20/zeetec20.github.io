@@ -19,9 +19,6 @@ These are some pictures from Tulung app that can give you an imagining of the ap
 
 <div align="middle">
     <img class="" src="/portfolio/tulung/image1.png" alt="UI Tulung" style="display: inline-block;">
-    <img class="" src="/portfolio/tulung/image2.png" alt="UI Tulung" style="display: inline-block;">
-    <img class="" src="/portfolio/tulung/image3.png" alt="UI Tulung" style="display: inline-block;">
-    <img class="" src="/portfolio/tulung/image4.png" alt="UI Tulung" style="display: inline-block;">
 </div>
 
 <br/>

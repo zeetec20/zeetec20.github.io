@@ -13,13 +13,22 @@ import moment from 'moment';
 import ReactMarkdown from 'react-markdown'
 import { Prism as ReactSyntaxHighlighter } from 'react-syntax-highlighter'
 import { xonokai } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import Image from 'next/image'
 import Link from 'next/link'
 import dotenv from 'dotenv'
 import rehypeRaw from 'rehype-raw'
+import ImageShimmer from '@/component/ImageShimmer';
+import { useRecoilValue } from 'recoil';
+import { theme as themeAtom } from '@/store/atom';
+import { ThemeMode } from '@/types';
 
 const Markdown = (props: { markdown: string }) => {
-  return <ReactMarkdown components={{
+  const theme = useRecoilValue(themeAtom)
+  return <ReactMarkdown components={{// eslint-disable-next-line react/display-name
+    img: ({node, ...props}) => (
+      <div className='radius img-thumbnail' style={{border: 'calc(1px + 0.25rem) solid #dee2e6', padding: '0'}}>
+        <ImageShimmer quality={90} src={props.src ?? ''} style={{position: 'relative'}} layout="fill" objectFit="contain" alt='' />
+      </div>
+    ),
     code({ node, inline, className, children, ...props }) {
       const match = /language-(\w+)/.exec(className || '')
       return !inline && match ? (
@@ -70,7 +79,7 @@ const DetailPortfolioPage = ({ status, meta, article }: {status: any, meta: any,
 
       <Container className={`text-center ${styles.article_width} ${styles.wrap_thumbnail}`} style={{ fontFamily: 'Source Sans Pro'}}>
         <Container className={`position-relative ${styles.thumbnail}`}>
-          <Image src={meta['thumbnail']} className='img-thumbnail border-0' layout='fill' objectFit='cover' alt='thumnail article' />
+          <ImageShimmer quality={75} placeholder='blur' src={meta['thumbnail']} className='img-thumbnail border-0' layout='fill' objectFit='cover' alt='thumnail article' />
         </Container>
         <b><p style={{ fontSize: '35px', fontWeight: 'bold' }}>{meta['title']}</p></b>
 

@@ -12,6 +12,7 @@ import FooterComponent from '../../component/Footer'
 import ArticleComponent from '../../component/Article'
 import Link from 'next/link'
 import dotenv from 'dotenv'
+import getArticles from '@/services/getArticles';
 // import Image from 'next/image'
 
 const ArticlePage = ({ article }: { article: any[] }) => {
@@ -59,32 +60,7 @@ const ArticlePage = ({ article }: { article: any[] }) => {
 export default ArticlePage
 
 export async function getStaticProps(context: any) {
-  const env = dotenv.config()?.parsed
-
-  const files = fs.readdirSync(env?.PRODUCTION ? './articles' : 'articles')
-  let data: any[] = []
-
-  await Promise.all(files.map(async (value) => {
-    const file = fs.readFileSync(env?.PRODUCTION ? `./articles/${value}` : `articles/${value}`)
-    const meta: any = matter(file).data
-    const resultGithub: Response = await fetch(`https://github.com/${meta['writer']}`, {
-      headers: { 'Content-Type': 'text/html' },
-    });
-    const text = await resultGithub.text()
-    const profile = text.split('https://avatars.githubusercontent.com/u/')[1].split('?')[0]
-    const name = text.split('itemprop="name">')[1].split('<')[0]
-
-    meta['writer-profile'] = 'https://avatars.githubusercontent.com/u/' + profile
-    meta['writer-name'] = name
-    
-    data.push({
-      'meta': meta,
-      'slug': value.split('.')[0],
-      'content': matter(file).content
-    })
-  }))
-
   return {
-    props: { article: data }
+    props: { article: await getArticles() }
   }
 }

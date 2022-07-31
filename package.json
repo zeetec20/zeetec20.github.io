@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "export": "next export && touch out/.nojekyll",
@@ -12,6 +12,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mdx-js/loader": "^2.1.2",
+    "@next/mdx": "^12.2.3",
     "@react-spring/web": "^9.4.5",
     "@reduxjs/toolkit": "^1.8.3",
     "@rena.to/github-blog": "^0.4.1",
@@ -23,6 +25,7 @@
     "gray-matter": "^4.0.3",
     "moment": "^2.29.1",
     "next": "11.1.0",
+    "next-images": "^1.8.4",
     "next-redux-wrapper": "^7.0.5",
     "osmosis": "^1.1.10",
     "react": "17.0.2",
@@ -41,6 +44,8 @@
     "@types/react-syntax-highlighter": "^13.5.2",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.0",
-    "typescript": "4.3.5"
+    "file-loader": "^6.2.0",
+    "typescript": "4.3.5",
+    "url-loader": "^4.1.1"
   }
 }
