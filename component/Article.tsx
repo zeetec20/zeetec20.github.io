@@ -31,29 +31,31 @@ class Article extends React.Component<propArticle> {
       <Row className='article'>
         <Col md={12}>
           <Link href={`/article/${prop.slug}`} passHref={true}>
-            <Card className='card-article'>
-              <div className="row card-body">
-                <Col md={4}>
-                  <div className='bg-dark' style={{ position: 'relative', borderRadius: '10px', width: '100%', height: '100%'}}>
-                    <ImageShimmer className='img-thumbnail border-0' layout='fill' placeholder='blur' objectFit='cover' src={prop.image} alt="" />
-                  </div>
-                </Col>
-                <Col md={8}>
-                  <div className='mt-1' style={{display: 'flex'}}>
-                    <ImageShimmer className='rounded-circle' style={{width: '25px', height: '25px'}} src={prop.profile} alt="" />
-                    <p className='align-middle' style={{ display: 'inline-block', fontSize: '14px', fontWeight: 'bold', color: process.env.color3, marginTop: '2px', marginLeft: '32px'}}>{prop.name}</p>
-                  </div>
+            <a style={{color: 'unset', textDecoration: 'unset'}}>
+              <Card className='card-article'>
+                <div className="row card-body">
+                  <Col md={4}>
+                    <div className='bg-dark' style={{ position: 'relative', borderRadius: '10px', width: '100%', height: '100%'}}>
+                      <ImageShimmer quality={25} className='img-thumbnail border-0' layout='fill' placeholder='blur' objectFit='cover' src={prop.image} alt="" />
+                    </div>
+                  </Col>
+                  <Col md={8}>
+                    <div className='mt-1' style={{display: 'flex'}}>
+                      <ImageShimmer className='rounded-circle' style={{width: '25px', height: '25px'}} src={prop.profile} alt="" />
+                      <p className='align-middle' style={{ display: 'inline-block', fontSize: '14px', fontWeight: 'bold', color: process.env.color3, marginTop: '2px', marginLeft: '32px'}}>{prop.name}</p>
+                    </div>
 
-                  <b><p className="card-title" style={{ fontSize: '30px' }}>{prop.title}</p></b>
-                  <p style={{ color: process.env.color3, fontSize: '16px' }}>{prop.description}</p>
+                    <b><p className="card-title" style={{ fontSize: '30px' }}>{prop.title}</p></b>
+                    <p style={{ color: process.env.color3, fontSize: '16px' }}>{prop.description}</p>
 
-                  <p>{tags}</p>
+                    <p>{tags}</p>
 
-                  <p className="card-text" style={{ fontSize: '14px' }}><b><span>{prop.date}</span></b> &nbsp; <span>({prop.days})</span></p>
-                  {/* <a href=""><Button className='mt-3'>Read Article</Button></a> */}
-                </Col>
-              </div>
-            </Card>
+                    <p className="card-text" style={{ fontSize: '14px' }}><b><span>{prop.date}</span></b> &nbsp; <span>({prop.days})</span></p>
+                    {/* <a href=""><Button className='mt-3'>Read Article</Button></a> */}
+                  </Col>
+                </div>
+              </Card>
+            </a>
           </Link>
         </Col>
       </Row>

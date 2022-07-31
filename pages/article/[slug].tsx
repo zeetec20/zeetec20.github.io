@@ -21,12 +21,11 @@ import rehypeRaw from 'rehype-raw'
 import ImageShimmer from '@/component/ImageShimmer';
 
 const Markdown = (props: { markdown: string }) => {
-  // return <ReactMarkdown renderers={customRenderers}>{props.markdown}</ReactMarkdown>
   return <ReactMarkdown components={{
     // eslint-disable-next-line react/display-name
     img: ({node, ...props}) => (
-      <div className='radius image-next'>
-        <ImageShimmer src={props.src ?? ''} layout="fill" objectFit="contain" alt='' />
+      <div className='radius img-thumbnail' style={{border: 'calc(1px + 0.25rem) solid #dee2e6', padding: '0'}}>
+        <ImageShimmer quality={90} src={props.src ?? ''} style={{position: 'relative'}} layout="fill" objectFit="contain" alt='' />
       </div>
     ),
     code({ node, inline, className, children, ...props }) {
@@ -86,7 +85,7 @@ const DetailArticlePage = ({ status, meta, article }: {status: any, meta: any, a
 
       <Container className={`text-center ${styles.article_width} ${styles.wrap_thumbnail}`} style={{ fontFamily: 'Source Sans Pro'}}>
         <Container className={`position-relative ${styles.thumbnail} img-thumbnail `}>
-          <ImageShimmer src={meta['thumbnail']} className='border-0' alt='thumnail article' />
+          <ImageShimmer quality={75} src={meta['thumbnail']} className='border-0' alt='thumnail article' />
         </Container>
         <b><p style={{ fontSize: '35px', fontWeight: 'bold' }}>{meta['title']}</p></b>
 

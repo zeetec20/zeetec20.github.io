@@ -9,7 +9,7 @@ import Image from 'next/image'
 import nightIcon from '../public/night.png'
 import dayIcon from '../public/day.png'
 import { ThemeMode } from '@/types'
-import {useSpring, config, animated} from '@react-spring/web'
+import {useTransition, animated} from '@react-spring/web'
 
 interface propType {
   loading?: boolean
@@ -19,6 +19,12 @@ const NavbarComponent = (prop: propType) => {
   const [theme, setTheme] = useRecoilState(atom.theme)
   const router = useRouter()
   const [loading, setloading] = useState(prop.loading)
+  const transitions = useTransition(theme == ThemeMode.dark, {
+    from: { opacity: 0, position: 'absolute' },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    config: { duration: 300 }
+  })
 
   return (
     <>
@@ -33,7 +39,6 @@ const NavbarComponent = (prop: propType) => {
             </Link>
           </div>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-
 
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
@@ -57,8 +62,10 @@ const NavbarComponent = (prop: propType) => {
               </div>
               <div>
                 <button type="button" className="btn button-theme p-0 rounded-circle" style={{width: 45, height: 43, marginLeft: '15px'}} onClick={() => switchThemeMode(theme, setTheme)}>
-                  <div style={{paddingTop: '5px'}}>
-                    <Image className='button-theme-icon' src={theme == ThemeMode.dark ? nightIcon : dayIcon} width={25} height={25} alt='' />
+                  <div style={{paddingTop: '5px', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                    {transitions((styles, item) => item ?
+                    <animated.div style={{ opacity: styles.opacity, position: 'absolute' }}><Image className='button-theme-icon' src={nightIcon} width={25} height={25} alt='' /></animated.div> :
+                    <animated.div style={{ opacity: styles.opacity, position: 'absolute' }}><Image className='button-theme-icon' src={dayIcon} width={25} height={25} alt='' /></animated.div>)}
                   </div>
                 </button>
               </div>
