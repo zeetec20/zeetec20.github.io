@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Container, Row, Col, Button, Card } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
@@ -10,10 +9,8 @@ import Head from 'next/head'
 import NavbarComponent from '../../component/Navbar'
 import FooterComponent from '../../component/Footer'
 import ArticleComponent from '../../component/Article'
-import Link from 'next/link'
-import dotenv from 'dotenv'
 import getArticles from '@/services/getArticles';
-// import Image from 'next/image'
+import { dateDDMMYYYToTimeSince } from '@/utils';
 
 const ArticlePage = ({ article }: { article: any[] }) => {
   const meta_name = 'Article | Firman ✋'
@@ -24,7 +21,7 @@ const ArticlePage = ({ article }: { article: any[] }) => {
     const createdAt: string = moment(value['meta']['createdAt'], 'DD-MM-YYYY').format('dddd, MMMM DD YYYY')
     return (
       <div key={key} onClick={() => setloading(true)}>
-         <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tag={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={moment(value['meta']['createdAt'], 'DD-MM-YYYY').fromNow()} />
+        <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tag={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={dateDDMMYYYToTimeSince(value['meta']['createdAt'])} />
       </div>
     )
   })
@@ -34,25 +31,25 @@ const ArticlePage = ({ article }: { article: any[] }) => {
       <Head>
         <title>{meta_name}</title>
 
-        <meta itemProp="name" content={meta_name}/>
+        <meta itemProp="name" content={meta_name} />
 
-        <meta property="og:title" content={meta_name}/>
+        <meta property="og:title" content={meta_name} />
 
-        <meta name="twitter:title" content={meta_name}/>
+        <meta name="twitter:title" content={meta_name} />
       </Head>
 
       <NavbarComponent loading={loading} />
-      
-      <Container className={styles.wrap_list_article} style={{fontFamily: 'Source Sans Pro', marginTop: '5.5%', minHeight: '550px'}}>
-        <b><p style={{fontSize: '35px', fontWeight: 'bold'}}>Article.</p></b>
-        <p className={styles.wrap_list_article_description} style={{width: '70%'}}>Sometimes when i&apos;m bored I like writing and this article is very usefull for my noted because I often forget what I learned, maybe my article is not good like medium or dev.to but it&apos;s still worth for your read.</p>
 
-        <div style={{marginTop: '4%'}}>
+      <Container className={styles.wrap_list_article} style={{ fontFamily: 'Source Sans Pro', marginTop: '5.5%', minHeight: '550px' }}>
+        <b><p style={{ fontSize: '35px', fontWeight: 'bold' }}>Article.</p></b>
+        <p className={styles.wrap_list_article_description} style={{ width: '70%' }}>Sometimes when i&apos;m bored I like writing and this article is very usefull for my noted because I often forget what I learned, maybe my article is not good like medium or dev.to but it&apos;s still worth for your read.</p>
+
+        <div style={{ marginTop: '4%' }}>
           {listArticle}
         </div>
       </Container>
 
-      <FooterComponent/>
+      <FooterComponent />
     </>
   )
 }
