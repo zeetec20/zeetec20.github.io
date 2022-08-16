@@ -12,6 +12,7 @@ import FooterComponent from '../../../component/Footer'
 import ArticleComponent from '../../../component/Article'
 import Link from 'next/link'
 import dotenv from 'dotenv'
+import { dateDDMMYYYToTimeSince } from '@/utils'
 // import Image from 'next/image'
 
 const ArticleTagPage = ({ article }: {article: any[]}) => {
@@ -25,7 +26,7 @@ const ArticleTagPage = ({ article }: {article: any[]}) => {
     const createdAt: string = moment(value['meta']['createdAt'], 'DD-MM-YYYY').format('dddd, MMMM DD YYYY')
     return (
       <div key={key} onClick={() => setloading(true)}>
-         <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tag={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={moment(value['meta']['createdAt'], 'DD-MM-YYYY').fromNow()} />
+         <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tag={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={dateDDMMYYYToTimeSince(value['meta']['createdAt'])} />
       </div>
     )
   })

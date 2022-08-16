@@ -1,5 +1,4 @@
-import {SetterOrUpdater, useRecoilState, useSetRecoilState} from 'recoil'
-import {theme as themeAtom} from '@/store/atom'
+import {SetterOrUpdater} from 'recoil'
 import { ThemeMode } from '@/types'
 import ThemeService from '@/services/themeService'
 

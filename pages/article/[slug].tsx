@@ -19,13 +19,14 @@ import Link from 'next/link'
 import dotenv from 'dotenv'
 import rehypeRaw from 'rehype-raw'
 import ImageShimmer from '@/component/ImageShimmer';
+import { dateDDMMYYYToTimeSince } from '@/utils';
 
 const Markdown = (props: { markdown: string }) => {
   return <ReactMarkdown components={{
     // eslint-disable-next-line react/display-name
-    img: ({node, ...props}) => (
-      <div className='radius img-thumbnail' style={{border: 'calc(1px + 0.25rem) solid #dee2e6', padding: '0'}}>
-        <ImageShimmer quality={90} src={props.src ?? ''} style={{position: 'relative'}} layout="fill" objectFit="contain" alt='' />
+    img: ({ node, ...props }) => (
+      <div className='radius img-thumbnail' style={{ border: 'calc(1px + 0.25rem) solid #dee2e6', padding: '0' }}>
+        <ImageShimmer quality={90} src={props.src ?? ''} style={{ position: 'relative' }} layout="fill" objectFit="contain" alt='' />
       </div>
     ),
     code({ node, inline, className, children, ...props }) {
@@ -46,7 +47,7 @@ const Markdown = (props: { markdown: string }) => {
   >{props.markdown}</ReactMarkdown>
 }
 
-const DetailArticlePage = ({ status, meta, article }: {status: any, meta: any, article: any}) => {
+const DetailArticlePage = ({ status, meta, article }: { status: any, meta: any, article: any }) => {
   const meta_name = `${meta['title']} | Firman ✋`
   const meta_description = meta['description']
   const meta_image = `${process.env.domain}${meta['thumbnail']}`
@@ -55,7 +56,7 @@ const DetailArticlePage = ({ status, meta, article }: {status: any, meta: any, a
 
   let tags = (meta['tag'] as string[]).map(
     (tag, key) => (
-      <div key={key} onClick={() => setloading(true)} style={{display: 'inline-block'}}>
+      <div key={key} onClick={() => setloading(true)} style={{ display: 'inline-block' }}>
         <Link href={`/article/tag/${tag.toLowerCase()}`} key={key} passHref><span style={{ cursor: 'pointer' }}><ArticleComponent.Tag tag={tag} className={styles.tag} /></span></Link>
       </div>
     )
@@ -66,30 +67,30 @@ const DetailArticlePage = ({ status, meta, article }: {status: any, meta: any, a
       <Head>
         <title>{meta_name}</title>
 
-        <meta name="description" content={meta_description}/>
+        <meta name="description" content={meta_description} />
 
-        <meta itemProp="name" content={meta_name}/>
-        <meta itemProp="description" content={meta_description}/>
-        <meta itemProp="image" content={meta_image}/>
+        <meta itemProp="name" content={meta_name} />
+        <meta itemProp="description" content={meta_description} />
+        <meta itemProp="image" content={meta_image} />
 
-        <meta property="og:title" content={meta_name}/>
-        <meta property="og:description" content={meta_description}/>
-        <meta property="og:image" content={meta_image}/>
+        <meta property="og:title" content={meta_name} />
+        <meta property="og:description" content={meta_description} />
+        <meta property="og:image" content={meta_image} />
 
-        <meta name="twitter:title" content={meta_name}/>
-        <meta name="twitter:description" content={meta_description}/>
+        <meta name="twitter:title" content={meta_name} />
+        <meta name="twitter:description" content={meta_description} />
         <meta name="twitter:image" content={meta_image}></meta>
       </Head>
 
       <NavbarComponent loading={loading} />
 
-      <Container className={`text-center ${styles.article_width} ${styles.wrap_thumbnail}`} style={{ fontFamily: 'Source Sans Pro'}}>
+      <Container className={`text-center ${styles.article_width} ${styles.wrap_thumbnail}`} style={{ fontFamily: 'Source Sans Pro' }}>
         <Container className={`position-relative ${styles.thumbnail} img-thumbnail `}>
           <ImageShimmer quality={75} src={meta['thumbnail']} className='border-0' alt='thumnail article' />
         </Container>
         <b><p style={{ fontSize: '35px', fontWeight: 'bold' }}>{meta['title']}</p></b>
 
-        <p className={`mt-4 ${styles.description}`} style={{ textAlign: 'center' }}>-- &nbsp; {moment(meta['createdAt'], 'DD-MM-YYYY').format('dddd, MMMM DD YYYY')} &nbsp; | &nbsp; {moment(meta['createdAt'], 'DD-MM-YYYY').fromNow()} &nbsp; --</p>
+        <p className={`mt-4 ${styles.description}`} style={{ textAlign: 'center' }}>-- &nbsp; {moment(meta['createdAt'], 'DD-MM-YYYY').format('dddd, MMMM DD YYYY')} &nbsp; | &nbsp; {dateDDMMYYYToTimeSince(meta['createdAt'])} &nbsp; --</p>
 
         {tags}
       </Container>
@@ -100,7 +101,7 @@ const DetailArticlePage = ({ status, meta, article }: {status: any, meta: any, a
           <p className='align-middle ms-3' style={{ display: 'inline-block', fontSize: '22px', fontWeight: 'bold', color: process.env.color3, marginBottom: '35px' }}>{meta['writer-name']}</p>
         </div>
       </Container>
-      
+
       <Container className={`${styles.article_width} ${styles.wrap_content}`} style={{ fontFamily: 'Source Sans Pro', marginTop: '10px' }}>
         <Markdown markdown={article!} />
       </Container>
@@ -123,7 +124,7 @@ export async function getStaticPaths() {
   })
 
   return {
-    paths: article.map(article => { return {params: {slug: article.toLowerCase()}}}),
+    paths: article.map(article => { return { params: { slug: article.toLowerCase() } } }),
     fallback: false,
   }
 }

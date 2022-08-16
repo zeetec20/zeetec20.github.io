@@ -19,7 +19,6 @@ import rehypeRaw from 'rehype-raw'
 import ImageShimmer from '@/component/ImageShimmer';
 import { useRecoilValue } from 'recoil';
 import { theme as themeAtom } from '@/store/atom';
-import { ThemeMode } from '@/types';
 
 const Markdown = (props: { markdown: string }) => {
   const theme = useRecoilValue(themeAtom)

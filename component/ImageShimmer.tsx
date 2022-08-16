@@ -2,7 +2,7 @@ import Image, {ImageProps} from "next/image"
 import { CSSProperties } from "react"
 import RegularImage from "./RegularImage"
 
-const ImageShimmer = (props: ImageProps & {style?: CSSProperties}) => {
+const ImageShimmer = (props: {style?: CSSProperties} & ImageProps ) => {
     const shimmer = (w: number, h: number) => `
     <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
@@ -20,9 +20,6 @@ const ImageShimmer = (props: ImageProps & {style?: CSSProperties}) => {
     typeof window === 'undefined'
         ? Buffer.from(str).toString('base64')
         : window.btoa(str)
-
-    const width =  props.width != undefined ? parseFloat((props.width.toString()).match(/\d+/)?.join('') ?? '0') : undefined
-    const height =  props.height != undefined ? parseFloat((props.height.toString()).match(/\d+/)?.join('') ?? '0') : undefined
 
     return (
         <RegularImage {...props} alt={props.alt} placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`} />

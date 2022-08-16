@@ -11,6 +11,7 @@ import FooterComponent from '@/component/Footer'
 import ArticleComponent from '@/component/Article'
 import Link from 'next/link'
 import getArticles from '@/services/getArticles';
+import { dateDDMMYYYToTimeSince } from '@/utils';
 
 const HomePage = ({ article }: { article: any[] }) => {
   const [loading, setloading] = useState(false)
@@ -19,7 +20,7 @@ const HomePage = ({ article }: { article: any[] }) => {
     const createdAt: string = moment(value['meta']['createdAt'], 'DD-MM-YYYY').format('dddd, MMMM DD YYYY')
     return (
       <div key={key} onClick={() => setloading(true)}>
-        <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tag={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={moment(value['meta']['createdAt'], 'DD-MM-YYYY').fromNow()} />
+        <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tag={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={dateDDMMYYYToTimeSince(value['meta']['createdAt'])} />
       </div>
     )
   })
@@ -28,7 +29,7 @@ const HomePage = ({ article }: { article: any[] }) => {
     <>
       <NavbarComponent loading={loading} />
 
-      <Container className={styles.wrap} style={{ marginTop: '5.5%'}}>
+      <Container className={styles.wrap} style={{ marginTop: '5.5%' }}>
         <b><p style={{ fontFamily: 'Source Sans Pro', fontSize: '40px' }}>I&apos; am Firman Justisio Lestari</p></b>
         <p style={{ fontFamily: 'ubuntu', fontSize: '20px', width: '70%' }}>You can call me firman, I&apos; am Software Engineer were focused on 🖥️ web app with technology (Django, Laravel, Next) and 📱 mobile app with technology (Flutter) </p>
 

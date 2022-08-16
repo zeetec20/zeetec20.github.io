@@ -8,6 +8,8 @@ tag: [CSS, Responsive, HTML, Website]
 ---
 # **CSS function min(), max(), and clamp() is incredible**
 
+<br/>
+
 CSS has many cool functions but for now, we will spotlight these three functions **min,** **max, and clamp.** With this, you can make your responsive website easy and so smooth, in this article I will show you how to use it and I will give you a usage sample.
 
 Website in general for making responsive used a media query, but if you write all CSS for resized elements on a media query the code is too much, then from now on you can try using these functions for making your code less and simple.

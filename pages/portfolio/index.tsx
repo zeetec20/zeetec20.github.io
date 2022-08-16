@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { Container, Row, Col, Button, Card } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
@@ -11,7 +10,6 @@ import FooterComponent from '../../component/Footer'
 import PortfolioComponent from '../../component/Portfolio'
 import Link from 'next/link'
 import dotenv from 'dotenv'
-// import Image from 'next/image'
 
 const PortfolioPage = ({ portfolio }: { portfolio: any[] }) => {
   const meta_name = 'Portfolio | Firman ✋'
