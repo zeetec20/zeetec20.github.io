@@ -1,30 +1,36 @@
-import { Container, Row, Col, Button, Card } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect, useState } from 'react';
-import fs from 'fs'
-import matter from 'gray-matter';
 import moment from 'moment';
 import styles from '../../styles/Article.module.css'
 import Head from 'next/head'
-import NavbarComponent from '../../component/Navbar'
-import FooterComponent from '../../component/Footer'
 import ArticleComponent from '../../component/Article'
 import getArticles from '@/services/getArticles';
 import { dateDDMMYYYToTimeSince } from '@/utils';
+import { useSetRecoilState } from 'recoil';
+import * as atom from '@/store/atom'
+
+const Test = () => {
+  return (
+    <>
+
+    </>
+  )
+}
 
 const ArticlePage = ({ article }: { article: any[] }) => {
   const meta_name = 'Article | Firman ✋'
-  const meta_description = ''
-  const [loading, setloading] = useState(false)
+  const setLoading = useSetRecoilState(atom.navbarLoading)
 
   const listArticle = article.map((value, key) => {
     const createdAt: string = moment(value['meta']['createdAt'], 'DD-MM-YYYY').format('dddd, MMMM DD YYYY')
     return (
-      <div key={key} onClick={() => setloading(true)}>
+      <div key={key} onClick={() => setLoading(true)}>
         <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tag={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={dateDDMMYYYToTimeSince(value['meta']['createdAt'])} />
       </div>
     )
   })
+
+  console.log('test 123 article')
 
   return (
     <>
@@ -38,7 +44,7 @@ const ArticlePage = ({ article }: { article: any[] }) => {
         <meta name="twitter:title" content={meta_name} />
       </Head>
 
-      <NavbarComponent loading={loading} />
+      <Test />
 
       <Container className={styles.wrap_list_article} style={{ fontFamily: 'Source Sans Pro', marginTop: '5.5%', minHeight: '550px' }}>
         <b><p style={{ fontSize: '35px', fontWeight: 'bold' }}>Article.</p></b>
@@ -48,8 +54,6 @@ const ArticlePage = ({ article }: { article: any[] }) => {
           {listArticle}
         </div>
       </Container>
-
-      <FooterComponent />
     </>
   )
 }

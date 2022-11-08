@@ -16,4 +16,15 @@ export default class ThemeService {
                 return ThemeMode.light
         }
     }
+
+    useThemeMode = (theme: ThemeMode) => {
+        if (theme == ThemeMode.dark) {
+            document.body.classList.add('theme-dark') 
+            document.body.classList.remove('theme-light')
+        }
+        if (theme == ThemeMode.light) {
+            document.body.classList.add('theme-light') 
+            document.body.classList.remove('theme-dark')
+        }
+    }
 }

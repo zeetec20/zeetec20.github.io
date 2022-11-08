@@ -13,10 +13,12 @@ import ArticleComponent from '../../../component/Article'
 import Link from 'next/link'
 import dotenv from 'dotenv'
 import { dateDDMMYYYToTimeSince } from '@/utils'
+import { useSetRecoilState } from 'recoil'
+import * as atom from '@/store/atom'
 // import Image from 'next/image'
 
 const ArticleTagPage = ({ article }: {article: any[]}) => {
-  const [loading, setloading] = useState(false)
+  const setLoading = useSetRecoilState(atom.navbarLoading)
 
   const router = useRouter()
   const tag = router.query['tag']!.toString().slice(0, 1).toUpperCase() + router.query['tag']!.toString().slice(1)
@@ -25,7 +27,7 @@ const ArticleTagPage = ({ article }: {article: any[]}) => {
   const listArticle = article.map((value, key) => {
     const createdAt: string = moment(value['meta']['createdAt'], 'DD-MM-YYYY').format('dddd, MMMM DD YYYY')
     return (
-      <div key={key} onClick={() => setloading(true)}>
+      <div key={key} onClick={() => setLoading(true)}>
          <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tag={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={dateDDMMYYYToTimeSince(value['meta']['createdAt'])} />
       </div>
     )
@@ -42,8 +44,6 @@ const ArticleTagPage = ({ article }: {article: any[]}) => {
 
         <meta name="twitter:title" content={meta_name}/>
       </Head>
-
-      <NavbarComponent loading={loading} />
       
       <Container style={{fontFamily: 'Source Sans Pro', marginTop: '5.5%', minHeight: '550px'}}>
         <b><p style={{ fontSize: '35px', fontWeight: 'bold' }}>{tag}.</p></b>
@@ -53,8 +53,6 @@ const ArticleTagPage = ({ article }: {article: any[]}) => {
           {listArticle}
         </div>
       </Container>
-
-      <FooterComponent/>
     </>
   )
 }
