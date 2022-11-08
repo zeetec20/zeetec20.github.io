@@ -2,8 +2,6 @@ import { Container} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Head from 'next/head'
 import styles from '../styles/About.module.css'
-import NavbarComponent from '../component/Navbar'
-import FooterComponent from '../component/Footer'
 import { RiFacebookBoxFill, RiGithubFill, RiWhatsappFill, RiInstagramFill, RiLinkedinFill, RiMailFill } from 'react-icons/ri'
 
 const AboutPage = () => {
@@ -19,8 +17,6 @@ const AboutPage = () => {
 
         <meta name="twitter:title" content={meta_name}/>
       </Head>
-
-      <NavbarComponent />
 
       <Container className={styles.wrap} style={{ fontFamily: 'Source Sans Pro', marginTop: '5.5%', minHeight: '550px' }}>
         <b><p style={{ fontSize: '35px', fontWeight: 'bold' }}>About.</p></b>
@@ -51,8 +47,6 @@ const AboutPage = () => {
           <a href='mailto:jusles363@gmail.com' className='socialmedia link-without-effect'><b><RiMailFill /> <span className='align-middle'>Email</span></b></a>
         </p>
       </Container>
-
-      <FooterComponent/>
     </>
   )
 }

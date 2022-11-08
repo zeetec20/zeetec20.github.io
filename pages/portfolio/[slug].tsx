@@ -4,8 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import fs from 'fs'
 import matter from 'gray-matter'
 import Head from 'next/head'
-import NavbarComponent from '../../component/Navbar'
-import FooterComponent from '../../component/Footer'
 import ArticleComponent from '../../component/Article'
 import NextError from 'next/error'
 import styles from '../../styles/Portfolio.module.css'
@@ -17,11 +15,8 @@ import Link from 'next/link'
 import dotenv from 'dotenv'
 import rehypeRaw from 'rehype-raw'
 import ImageShimmer from '@/component/ImageShimmer';
-import { useRecoilValue } from 'recoil';
-import { theme as themeAtom } from '@/store/atom';
 
 const Markdown = (props: { markdown: string }) => {
-  const theme = useRecoilValue(themeAtom)
   return <ReactMarkdown components={{// eslint-disable-next-line react/display-name
     img: ({node, ...props}) => (
       <div className='radius img-thumbnail' style={{border: 'calc(1px + 0.25rem) solid #dee2e6', padding: '0'}}>
@@ -74,8 +69,6 @@ const DetailPortfolioPage = ({ status, meta, article }: {status: any, meta: any,
         <meta name="twitter:image" content={meta_image}></meta>
       </Head>
 
-      <NavbarComponent />
-
       <Container className={`text-center ${styles.article_width} ${styles.wrap_thumbnail}`} style={{ fontFamily: 'Source Sans Pro'}}>
         <Container className={`position-relative ${styles.thumbnail}`}>
           <ImageShimmer quality={75} placeholder='blur' src={meta['thumbnail']} className='img-thumbnail border-0' layout='fill' objectFit='cover' alt='thumnail article' />
@@ -97,8 +90,6 @@ const DetailPortfolioPage = ({ status, meta, article }: {status: any, meta: any,
       <Container className={`${styles.article_width} ${styles.wrap_content}`} style={{ fontFamily: 'Source Sans Pro', marginTop: '40px' }}>
         <Markdown markdown={article!} />
       </Container>
-
-      <FooterComponent />
     </>
   )
 }

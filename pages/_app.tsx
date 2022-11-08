@@ -1,27 +1,38 @@
-import '../styles/globals.css'
+import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { RecoilRoot, useRecoilValue } from 'recoil'
+import { RecoilRoot, useRecoilCallback } from 'recoil'
+import Footer from '@/component/Footer'
+import Navbar from '@/component/Navbar'
 import * as atom from '@/store/atom'
-import { ThemeMode } from '@/types'
 import { useEffect, useState } from 'react'
+import ThemeService from '@/services/themeService'
 
 function Layout({ children }: any) {
+  const themeService = new ThemeService()
+  const [test, settest] = useState(0)
+  const themeCallback = useRecoilCallback( ({snapshot}) => async () => {
+    const theme = await snapshot.getPromise(atom.theme)
+    themeService.useThemeMode(theme)
+  })
   const meta_url = process.env.domain
   const meta_name = 'Firman Lestari ✋'
   const meta_description = 'Is it my personal website build with next js, I make this site for sharing about technology and my learning, there are also showcase my project.'
   const meta_image = `${process.env.domain}/meta_image.png`
-  const themeState = useRecoilValue(atom.theme)
+
   useEffect(() => {
-    if (themeState == ThemeMode.dark) { 
-      document.body.classList.add('theme-dark') 
-      document.body.classList.remove('theme-light')
+    themeCallback()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      settest(test + 1)
+    }, 500)
+    return () => {
+      clearInterval(interval)
     }
-    if (themeState == ThemeMode.light) { 
-      document.body.classList.add('theme-light') 
-      document.body.classList.remove('theme-dark')
-    }
-  }, [themeState])
+  })
 
   return (
     <>
@@ -53,7 +64,9 @@ function Layout({ children }: any) {
         <script async src="https://cdn.splitbee.io/sb.js"></script>
       </Head>
 
+      <Navbar/>
       {children}
+      <Footer/>
     </>
   )
 }

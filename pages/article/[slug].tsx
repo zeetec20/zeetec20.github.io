@@ -1,12 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import { Container } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useEffect, useState } from 'react';
 import fs from 'fs'
 import matter from 'gray-matter'
 import Head from 'next/head'
-import NavbarComponent from '../../component/Navbar'
-import FooterComponent from '../../component/Footer'
 import ArticleComponent from '../../component/Article'
 import NextError from 'next/error'
 import styles from '../../styles/Article.module.css'
@@ -20,6 +17,8 @@ import dotenv from 'dotenv'
 import rehypeRaw from 'rehype-raw'
 import ImageShimmer from '@/component/ImageShimmer';
 import { dateDDMMYYYToTimeSince } from '@/utils';
+import * as atom from '@/store/atom'
+import { useSetRecoilState } from 'recoil';
 
 const Markdown = (props: { markdown: string }) => {
   return <ReactMarkdown components={{
@@ -51,12 +50,12 @@ const DetailArticlePage = ({ status, meta, article }: { status: any, meta: any, 
   const meta_name = `${meta['title']} | Firman ✋`
   const meta_description = meta['description']
   const meta_image = `${process.env.domain}${meta['thumbnail']}`
-  const [loading, setloading] = useState(false)
+  const setLoading = useSetRecoilState(atom.navbarLoading)
   if (status == 404) return <NextError statusCode={status} />
 
   let tags = (meta['tag'] as string[]).map(
     (tag, key) => (
-      <div key={key} onClick={() => setloading(true)} style={{ display: 'inline-block' }}>
+      <div key={key} onClick={() => setLoading(true)} style={{ display: 'inline-block' }}>
         <Link href={`/article/tag/${tag.toLowerCase()}`} key={key} passHref><span style={{ cursor: 'pointer' }}><ArticleComponent.Tag tag={tag} className={styles.tag} /></span></Link>
       </div>
     )
@@ -82,8 +81,6 @@ const DetailArticlePage = ({ status, meta, article }: { status: any, meta: any, 
         <meta name="twitter:image" content={meta_image}></meta>
       </Head>
 
-      <NavbarComponent loading={loading} />
-
       <Container className={`text-center ${styles.article_width} ${styles.wrap_thumbnail}`} style={{ fontFamily: 'Source Sans Pro' }}>
         <Container className={`position-relative ${styles.thumbnail} img-thumbnail `}>
           <ImageShimmer quality={75} src={meta['thumbnail']} className='border-0' alt='thumnail article' />
@@ -105,8 +102,6 @@ const DetailArticlePage = ({ status, meta, article }: { status: any, meta: any, 
       <Container className={`${styles.article_width} ${styles.wrap_content}`} style={{ fontFamily: 'Source Sans Pro', marginTop: '10px' }}>
         <Markdown markdown={article!} />
       </Container>
-
-      <FooterComponent />
     </>
   )
 }
