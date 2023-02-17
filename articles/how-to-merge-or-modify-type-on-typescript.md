@@ -1,6 +1,6 @@
 ---
 title: How to merge or modify type on Typescript
-description: Concurrency, in computer science concurrency is a the abillity to dealing with lots or multiple things at once. By using concurrency we can increase performance and speed application, in this article we will try implement to Flutter / Dart.
+description: Typescript is static type programming language, in here I will show you how to modify type. For modify I will use Omit, it's one of utility types on Typescript.
 thumbnail: /article/how-to-merge-or-modify-type-on-typescript/thumbnail.jpg
 createdAt: 17-02-2023
 writer: zeetec20
@@ -21,7 +21,7 @@ So after I explain Typescript let’s enter the topic, sometimes when you use ty
 type Overwrite<A, B> = Omit<A, keyof B> & B
 ```
 
-So above I have some code types, inside here I have type [Omit](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys) its utility type for removing a key from a type of object. Well let’s see the code, here we have [generic types](https://www.typescriptlang.org/docs/handbook/2/generics.html) `A` and `B` it’s for storing the type we need to modify. Generic type `A` is for a target type and `B` is for the second type which will be merged.
+So above I have some code types, inside here I have type [Omit](https://www.typescriptlang.org/docs/handbook/utility-types.html#omittype-keys) it’s utility type for removing a key from a type of object. Well let’s see the code, here we have [generic types](https://www.typescriptlang.org/docs/handbook/2/generics.html) `A` and `B` it’s for storing the type we need to modify. Generic type `A` is for a target type and `B` is for the second type which will be merged.
 
 ```tsx
 type User = {
