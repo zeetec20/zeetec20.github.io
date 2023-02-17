@@ -10,21 +10,26 @@ import { dateDDMMYYYToTimeSince } from '@/utils';
 import { useSetRecoilState } from 'recoil';
 import * as atom from '@/store/atom'
 
-const HomePage = (prop: any) => {
-  const article: any[] = prop.article
+interface HomePageProps {
+  articles: { [key: string]: any }[]
+}
+
+const HomePage = ({ articles }: HomePageProps) => {
   const setLoading = useSetRecoilState(atom.navbarLoading)
 
   const ListArticle = () => {
-    return <div className='mt-4'>
-      {article.map((value, key) => {
-        const createdAt: string = moment(value['meta']['createdAt'], 'DD-MM-YYYY').format('dddd, MMMM DD YYYY')
-        return (
-          <div key={key} onClick={() => setLoading(true)}>
-            <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tag={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={dateDDMMYYYToTimeSince(value['meta']['createdAt'])} />
-          </div>
-        )
-      })}
-    </div>
+    return (
+      <div className='mt-4'>
+        {articles.map((value, key) => {
+          const createdAt: string = moment(value['meta']['createdAt'], 'DD-MM-YYYY').format('dddd, MMMM DD YYYY')
+          return (
+            <div key={key} onClick={() => setLoading(true)}>
+              <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tag={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={dateDDMMYYYToTimeSince(value['meta']['createdAt'])} />
+            </div>
+          )
+        })}
+      </div>
+    )
   }
 
   return (
@@ -51,6 +56,6 @@ export default HomePage
 
 export const getStaticProps = async (context: any) => {
   return {
-    props: { article: await getArticles() }
+    props: { articles: (await getArticles()).slice(0, 3) }
   }
 }
