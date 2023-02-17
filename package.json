@@ -18,6 +18,8 @@
     "@reduxjs/toolkit": "^1.8.3",
     "@rena.to/github-blog": "^0.4.1",
     "@types/osmosis": "^1.1.1",
+    "@vercel/edge": "^0.1.2",
+    "@vercel/og": "^0.0.21",
     "bootstrap": "^5.1.0",
     "cookies-next": "^2.1.1",
     "dotenv": "^10.0.0",
