@@ -33,4 +33,6 @@ const getArticles = async () => {
   return data
 }
 
-export default getArticles
+export {
+  getArticles
+}

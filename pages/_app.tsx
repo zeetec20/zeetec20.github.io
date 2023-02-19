@@ -4,16 +4,14 @@ import Head from 'next/head'
 import { RecoilRoot, useRecoilCallback } from 'recoil'
 import Footer from '@/component/Footer'
 import Navbar from '@/component/Navbar'
-import * as atom from '@/store/atom'
 import { useEffect, useState } from 'react'
-import ThemeService from '@/services/themeService'
+import { theme } from '@/store/theme'
+import { setThemeMode } from '@/services/theme'
 
 function Layout({ children }: any) {
-  const themeService = new ThemeService()
   const [test, settest] = useState(0)
   const themeCallback = useRecoilCallback( ({snapshot}) => async () => {
-    const theme = await snapshot.getPromise(atom.theme)
-    themeService.useThemeMode(theme)
+    setThemeMode(await snapshot.getPromise(theme))
   })
   const meta_url = process.env.domain
   const meta_name = 'Firman Lestari ✋'
