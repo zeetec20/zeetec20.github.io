@@ -57,8 +57,8 @@ const DetailArticlePage = ({ status, meta, article }: { status: any, meta: any, 
   let tags = (meta['tag'] as string[]).map(
     (tag, key) => (
       <div key={key} onClick={() => setLoading(true)} style={{ display: 'inline-block' }}>
-        <Link href={`/article/tag/${tag.toLowerCase()}`} key={key} passHref><span style={{ cursor: 'pointer' }}>
-          <Tag tag={tag} className={styles.tag} /></span>
+        <Link href={`/article/tag/${tag.toLowerCase()}`} key={key} style={{ textDecoration: 'none' }} passHref>
+          <Tag tag={tag} className={styles.tag} />
         </Link>
       </div>
     )
@@ -96,9 +96,9 @@ const DetailArticlePage = ({ status, meta, article }: { status: any, meta: any, 
       </Container>
 
       <Container className={`${styles.article_width} ${styles.wrap_title}`} style={{ fontFamily: 'Source Sans Pro', marginTop: '6%' }}>
-        <div className='mt-1'>
+        <div className='mt-1 d-flex align-items-center'>
           <Image className='rounded-circle' width={45} height={45} src={meta['writer-profile']} alt="" />
-          <p className='align-middle ms-3' style={{ display: 'inline-block', fontSize: '22px', fontWeight: 'bold', color: process.env.color3, marginBottom: '35px' }}>{meta['writer-name']}</p>
+          <p className='align-middle ms-3' style={{ fontSize: '22px', fontWeight: 'bold', color: process.env.color3, marginBottom: 0}}>{meta['writer-name']}</p>
         </div>
       </Container>
 
