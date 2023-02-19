@@ -35,8 +35,8 @@ const Article = ({
         <Card className='card-article'>
           <div className="row card-body">
             <Col md={4}>
-              <div className='bg-dark' style={{ position: 'relative', borderRadius: '10px', width: '100%', height: '100%' }}>
-                <ImageShimmer quality={25} className='img-thumbnail border-0' fill={true} placeholder='blur' style={{ objectFit: 'cover' }} src={image} alt="" />
+              <div className='bg-dark' style={{ position: 'relative', borderRadius: '5px', width: '100%', height: '100%', overflow: 'hidden'}}>
+                <ImageShimmer quality={25} className='border-0' fill={true} placeholder='blur' style={{ objectFit: 'cover' }} src={image} alt="" />
               </div>
             </Col>
             <Col md={8}>

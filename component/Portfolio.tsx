@@ -23,8 +23,8 @@ const Portfolio = (prop: propPortfolio) => {
     <Link href={`/portfolio/${prop.slug}`} style={{ textDecoration: 'none' }} passHref>
       <Card className='card-portfolio'>
         <div className='p-3 pb-0'>
-          <div style={{ width: '100%', height: 'clamp(330px, 25vw, 400px)', position: 'relative', borderRadius: '10px', overflow: 'hidden' }}>
-            <ImageShimmer className='card-img-top' alt='' placeholder='blur' layout='fill' objectFit='cover' src={prop.thumbnail} />
+          <div style={{ width: '100%', height: 'clamp(330px, 25vw, 400px)', position: 'relative', borderRadius: '5px', overflow: 'hidden' }}>
+            <ImageShimmer className='card-img-top' alt='' placeholder='blur' fill={true} style={{objectFit: 'cover'}} src={prop.thumbnail} />
           </div>
         </div>
         <Card.Body>
