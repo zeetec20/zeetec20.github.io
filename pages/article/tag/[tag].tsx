@@ -1,24 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
-import { Container, Row, Col, Button, Card } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { useEffect, useState } from 'react'
 import fs from 'fs'
 import matter from 'gray-matter'
 import moment from 'moment'
 import Head from 'next/head'
 import {useRouter} from 'next/router'
-import NavbarComponent from '../../../component/Navbar'
-import FooterComponent from '../../../component/Footer'
 import ArticleComponent from '../../../component/Article'
-import Link from 'next/link'
 import dotenv from 'dotenv'
 import { dateDDMMYYYToTimeSince } from '@/utils'
 import { useSetRecoilState } from 'recoil'
-import * as atom from '@/store/atom'
+import { navbarLoading } from '@/store/navbarLoading'
 // import Image from 'next/image'
 
 const ArticleTagPage = ({ article }: {article: any[]}) => {
-  const setLoading = useSetRecoilState(atom.navbarLoading)
+  const setLoading = useSetRecoilState(navbarLoading)
 
   const router = useRouter()
   const tag = router.query['tag']!.toString().slice(0, 1).toUpperCase() + router.query['tag']!.toString().slice(1)
@@ -28,7 +24,7 @@ const ArticleTagPage = ({ article }: {article: any[]}) => {
     const createdAt: string = moment(value['meta']['createdAt'], 'DD-MM-YYYY').format('dddd, MMMM DD YYYY')
     return (
       <div key={key} onClick={() => setLoading(true)}>
-         <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tag={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={dateDDMMYYYToTimeSince(value['meta']['createdAt'])} />
+         <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tags={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={dateDDMMYYYToTimeSince(value['meta']['createdAt'])} />
       </div>
     )
   })

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { MouseEventHandler, memo, useEffect, useMemo, useState } from 'react'
 import { NextRouter, useRouter } from 'next/dist/client/router'
 import { switchThemeMode } from '@/store/action/switchThemeMode'
-import { SetterOrUpdater, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 import Image from 'next/image'
 import nightIcon from '../public/night.png'
 import dayIcon from '../public/day.png'
@@ -42,7 +42,7 @@ interface NavLinkInterface {
   onClick: MouseEventHandler<HTMLAnchorElement> | undefined
 }
 
-const NavLink = ({ href, nav, router, onClick }: NavLinkInterface) => {
+const NavLink = ({ href, nav }: NavLinkInterface) => {
   return (
     <Link href={href} onClick={undefined} passHref legacyBehavior>
       <Nav.Link className='px-3 theme-nav' style={{ fontFamily: 'ubuntu' }}>{nav}</Nav.Link>
@@ -65,7 +65,7 @@ const NavbarComponent = () => {
 
   useEffect(() => {
     setLoading(false)
-  }, [setLoading])
+  })
 
   return (
     <>
