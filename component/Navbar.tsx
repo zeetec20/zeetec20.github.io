@@ -22,12 +22,15 @@ const ThemeButton = () => {
   })
 
   return (
-    <button type="button" className="btn button-theme p-0 rounded-circle" style={{ width: 45, height: 43, marginLeft: '15px' }} onClick={() => switchThemeMode(theme, setTheme)}>
-      <div style={{ paddingTop: '5px', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        {transitions((styles, item) => item ?
-          <animated.div style={{ opacity: styles.opacity, position: 'absolute' }}><Image className='button-theme-icon' src={nightIcon} width={25} height={25} alt='' /></animated.div> :
-          <animated.div style={{ opacity: styles.opacity, position: 'absolute' }}><Image className='button-theme-icon' src={dayIcon} width={25} height={25} alt='' /></animated.div>)}
-      </div>
+    <button type="button" className="btn button-theme p-0 rounded-circle d-flex justify-content-center align-items-center" style={{ width: 45, height: 43, marginLeft: '15px' }} onClick={() => switchThemeMode(theme, setTheme)}>
+      {transitions((styles, item) => item ?
+        <animated.div style={{ opacity: styles.opacity, position: 'absolute' }}>
+          <Image className='button-theme-icon' src={nightIcon} width={25} height={25} alt='' />
+        </animated.div> :
+        <animated.div style={{ opacity: styles.opacity, position: 'absolute' }}>
+          <Image className='button-theme-icon' src={dayIcon} width={25} height={25} alt='' />
+        </animated.div>
+      )}
     </button>
   )
 }
@@ -62,8 +65,7 @@ const NavbarComponent = () => {
 
   useEffect(() => {
     setLoading(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  })
+  }, [setLoading])
 
   return (
     <>
