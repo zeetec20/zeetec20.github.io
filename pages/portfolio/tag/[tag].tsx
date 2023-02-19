@@ -9,11 +9,11 @@ import { useRouter } from 'next/router'
 import PortfolioComponent from '../../../component/Portfolio'
 import dotenv from 'dotenv'
 import { useSetRecoilState } from 'recoil'
-import * as atom from '@/store/atom'
+import { navbarLoading } from '@/store/navbarLoading'
 // import Image from 'next/image'
 
 const PortfolioTagPage = ({ portfolio }: { portfolio: any[] }) => {
-  const setLoading = useSetRecoilState(atom.navbarLoading)
+  const setLoading = useSetRecoilState(navbarLoading)
 
   const router = useRouter()
   const tag = router.query['tag']!.toString().slice(0, 1).toUpperCase() + router.query['tag']!.toString().slice(1)
