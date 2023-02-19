@@ -5,17 +5,17 @@ import moment from 'moment';
 import styles from '@/styles/Home.module.css'
 import ArticleComponent from '@/component/Article'
 import Link from 'next/link'
-import getArticles from '@/services/getArticles';
 import { dateDDMMYYYToTimeSince } from '@/utils';
 import { useSetRecoilState } from 'recoil';
-import * as atom from '@/store/atom'
+import { navbarLoading } from '@/store/navbarLoading';
+import { getArticles } from '@/services/article';
 
 interface HomePageProps {
-  articles: { [key: string]: any }[]
+  articles: { [key: string]: any }[],
 }
 
 const HomePage = ({ articles }: HomePageProps) => {
-  const setLoading = useSetRecoilState(atom.navbarLoading)
+  const setLoading = useSetRecoilState(navbarLoading)
 
   const ListArticle = () => {
     return (
@@ -24,7 +24,7 @@ const HomePage = ({ articles }: HomePageProps) => {
           const createdAt: string = moment(value['meta']['createdAt'], 'DD-MM-YYYY').format('dddd, MMMM DD YYYY')
           return (
             <div key={key} onClick={() => setLoading(true)}>
-              <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tag={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={dateDDMMYYYToTimeSince(value['meta']['createdAt'])} />
+              <ArticleComponent profile={value['meta']['writer-profile']} name={value['meta']['writer-name']} tags={value['meta']['tag']} slug={value['slug']} image={value['meta']['thumbnail']} title={value['meta']['title']} description={value['meta']['description']} date={createdAt} days={dateDDMMYYYToTimeSince(value['meta']['createdAt'])} />
             </div>
           )
         })}
@@ -52,10 +52,12 @@ const HomePage = ({ articles }: HomePageProps) => {
   )
 }
 
-export default HomePage
-
 export const getStaticProps = async (context: any) => {
   return {
-    props: { articles: (await getArticles()).slice(0, 3) }
+    props: { 
+      articles: (await getArticles()).slice(0, 3),
+    },
   }
 }
+
+export default HomePage

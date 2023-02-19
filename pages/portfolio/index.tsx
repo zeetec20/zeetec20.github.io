@@ -8,11 +8,11 @@ import PortfolioComponent from '../../component/Portfolio'
 import Link from 'next/link'
 import dotenv from 'dotenv'
 import { useSetRecoilState } from 'recoil';
-import * as atom from '@/store/atom'
+import { navbarLoading } from '@/store/navbarLoading';
 
 const PortfolioPage = ({ portfolio }: { portfolio: any[] }) => {
   const meta_name = 'Portfolio | Firman ✋'
-  const setLoading = useSetRecoilState(atom.navbarLoading)
+  const setLoading = useSetRecoilState(navbarLoading)
 
   let portfolioComponent: Array<Array<any>> = []
   portfolio.forEach((value, key) => {
@@ -46,18 +46,18 @@ const PortfolioPage = ({ portfolio }: { portfolio: any[] }) => {
       <Head>
         <title>{meta_name}</title>
 
-        <meta itemProp="name" content={meta_name}/>
+        <meta itemProp="name" content={meta_name} />
 
-        <meta property="og:title" content={meta_name}/>
+        <meta property="og:title" content={meta_name} />
 
-        <meta name="twitter:title" content={meta_name}/>
+        <meta name="twitter:title" content={meta_name} />
       </Head>
 
       <Container className={styles.wrap_list_portfolio} style={{ fontFamily: 'Source Sans Pro', marginTop: '5.5%', minHeight: '550px' }}>
         <b><p style={{ fontSize: '35px', fontWeight: 'bold' }}>Portfolio.</p></b>
-        <p className={styles.wrap_list_portfolio_description} style={{ width: '70%' }}>This page is for a showcase of my project not only that I will add personal project or just result from my learning. If you are interested in making a project like on my showcase you can <span onClick={() => setLoading(true)}><Link href='/about'><a>contact</a></Link></span> me we can realize together.</p>
+        <p className={styles.wrap_list_portfolio_description} style={{ width: '70%' }}>This page is for a showcase of my project not only that I will add personal project or just result from my learning. If you are interested in making a project like on my showcase you can <span onClick={() => setLoading(true)}><Link href='/about'>contact</Link></span> me we can realize together.</p>
 
-        <ListPortfolioComponent/>
+        <ListPortfolioComponent />
       </Container>
     </>
   )

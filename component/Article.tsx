@@ -1,16 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
-import {Row, Col, Card } from 'react-bootstrap'
+import { Row, Col, Card } from 'react-bootstrap'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import ImageShimmer from './ImageShimmer'
+import Tag from './Tag'
 
-interface propArticle {
+interface ArticleProps {
   profile: string,
   name: string,
-  tag: string[],
+  tags: string[],
   slug: string,
-
   image: string,
   title: string,
   description: string,
@@ -18,49 +18,53 @@ interface propArticle {
   days: string
 }
 
-class Article extends React.Component<propArticle> {
-  static Tag(prop: { tag: string, className?: string }) {
-    return (<a className={`tag me-2 ${prop.className}`} ><b>#{prop.tag}</b></a>)
-  }
+const Article = ({
+  slug,
+  image,
+  profile,
+  title,
+  description,
+  date,
+  days,
+  tags,
+  name,
+}: ArticleProps) => (
+  <Row className='article'>
+    <Col md={12}>
+      <Link href={`/article/${slug}`} passHref={true} style={{ color: 'unset', textDecoration: 'unset' }} legacyBehavior>
+        <Card className='card-article'>
+          <div className="row card-body">
+            <Col md={4}>
+              <div className='bg-dark' style={{ position: 'relative', borderRadius: '5px', width: '100%', height: '100%', overflow: 'hidden'}}>
+                <ImageShimmer quality={25} className='border-0' fill={true} placeholder='blur' style={{ objectFit: 'cover' }} src={image} alt="" />
+              </div>
+            </Col>
+            <Col md={8}>
+              <div className='mt-1' style={{ display: 'flex' }}>
+                <ImageShimmer className='rounded-circle' style={{ width: '25px', height: '25px' }} src={profile} alt="" />
+                <p className='align-middle' style={{ display: 'inline-block', fontSize: '14px', fontWeight: 'bold', color: process.env.color3, marginTop: '2px', marginLeft: '32px' }}>{name}</p>
+              </div>
 
-  render() {
-    const prop = this.props
+              <b><p className="card-title" style={{ fontSize: '30px' }}>{title}</p></b>
+              <p style={{ color: process.env.color3, fontSize: '16px' }}>{description}</p>
 
-    let tags = prop.tag.map((tag, key) => <Article.Tag key={key} tag={tag} />)
-    return (
-      <Row className='article'>
-        <Col md={12}>
-          <Link href={`/article/${prop.slug}`} passHref={true}>
-            <a style={{color: 'unset', textDecoration: 'unset'}}>
-              <Card className='card-article'>
-                <div className="row card-body">
-                  <Col md={4}>
-                    <div className='bg-dark' style={{ position: 'relative', borderRadius: '10px', width: '100%', height: '100%'}}>
-                      <ImageShimmer quality={25} className='img-thumbnail border-0' layout='fill' placeholder='blur' objectFit='cover' src={prop.image} alt="" />
-                    </div>
-                  </Col>
-                  <Col md={8}>
-                    <div className='mt-1' style={{display: 'flex'}}>
-                      <ImageShimmer className='rounded-circle' style={{width: '25px', height: '25px'}} src={prop.profile} alt="" />
-                      <p className='align-middle' style={{ display: 'inline-block', fontSize: '14px', fontWeight: 'bold', color: process.env.color3, marginTop: '2px', marginLeft: '32px'}}>{prop.name}</p>
-                    </div>
+              <p><ListTags tags={tags} /></p>
 
-                    <b><p className="card-title" style={{ fontSize: '30px' }}>{prop.title}</p></b>
-                    <p style={{ color: process.env.color3, fontSize: '16px' }}>{prop.description}</p>
+              <p className="card-text" style={{ fontSize: '14px' }}><b><span>{date}</span></b> &nbsp; <span>({days})</span></p>
+            </Col>
+          </div>
+        </Card>
+      </Link>
+    </Col>
+  </Row>
+)
 
-                    <p>{tags}</p>
-
-                    <p className="card-text" style={{ fontSize: '14px' }}><b><span>{prop.date}</span></b> &nbsp; <span>({prop.days})</span></p>
-                    {/* <a href=""><Button className='mt-3'>Read Article</Button></a> */}
-                  </Col>
-                </div>
-              </Card>
-            </a>
-          </Link>
-        </Col>
-      </Row>
-    )
-  }
-}
+const ListTags = ({ tags }: { tags: string[] }) => (
+  <>
+    {tags.map(
+      (tag, key) => <Tag key={key} tag={tag} />
+    )}
+  </>
+)
 
 export default Article

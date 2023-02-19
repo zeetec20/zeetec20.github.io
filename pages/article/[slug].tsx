@@ -17,8 +17,9 @@ import dotenv from 'dotenv'
 import rehypeRaw from 'rehype-raw'
 import ImageShimmer from '@/component/ImageShimmer';
 import { dateDDMMYYYToTimeSince } from '@/utils';
-import * as atom from '@/store/atom'
 import { useSetRecoilState } from 'recoil';
+import { navbarLoading } from '@/store/navbarLoading';
+import Tag from '@/component/Tag';
 
 const Markdown = (props: { markdown: string }) => {
   return <ReactMarkdown components={{
@@ -50,13 +51,15 @@ const DetailArticlePage = ({ status, meta, article }: { status: any, meta: any, 
   const meta_name = `${meta['title']} | Firman ✋`
   const meta_description = meta['description']
   const meta_image = `${process.env.domain}${meta['thumbnail']}`
-  const setLoading = useSetRecoilState(atom.navbarLoading)
+  const setLoading = useSetRecoilState(navbarLoading)
   if (status == 404) return <NextError statusCode={status} />
 
   let tags = (meta['tag'] as string[]).map(
     (tag, key) => (
       <div key={key} onClick={() => setLoading(true)} style={{ display: 'inline-block' }}>
-        <Link href={`/article/tag/${tag.toLowerCase()}`} key={key} passHref><span style={{ cursor: 'pointer' }}><ArticleComponent.Tag tag={tag} className={styles.tag} /></span></Link>
+        <Link href={`/article/tag/${tag.toLowerCase()}`} key={key} style={{ textDecoration: 'none' }} passHref>
+          <Tag tag={tag} className={styles.tag} />
+        </Link>
       </div>
     )
   )
@@ -93,9 +96,9 @@ const DetailArticlePage = ({ status, meta, article }: { status: any, meta: any, 
       </Container>
 
       <Container className={`${styles.article_width} ${styles.wrap_title}`} style={{ fontFamily: 'Source Sans Pro', marginTop: '6%' }}>
-        <div className='mt-1'>
-          <Image className='rounded-circle' width='45px' height='45px' src={meta['writer-profile']} alt="" />
-          <p className='align-middle ms-3' style={{ display: 'inline-block', fontSize: '22px', fontWeight: 'bold', color: process.env.color3, marginBottom: '35px' }}>{meta['writer-name']}</p>
+        <div className='mt-1 d-flex align-items-center'>
+          <Image className='rounded-circle' width={45} height={45} src={meta['writer-profile']} alt="" />
+          <p className='align-middle ms-3' style={{ fontSize: '22px', fontWeight: 'bold', color: process.env.color3, marginBottom: 0}}>{meta['writer-name']}</p>
         </div>
       </Container>
 
