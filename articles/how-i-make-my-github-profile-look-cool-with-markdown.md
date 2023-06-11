@@ -8,8 +8,6 @@ tag: [GitHub, Markdown]
 ---
 # **How I Make my GitHub Profile Look Cool With Markdown**
 
-<br>
-
 <div align="middle">
     <img class="img-thumbnail radius" src="/article/how-i-make-my-github-profile-look-cool-with-markdown/image1.jpg" alt="Sample Cool GitHub Profile" style="width: 95%;">
 </div>
@@ -24,8 +22,6 @@ try to change my GitHub profile and is it make my GitHub profile look so cool, a
 
 ## **1. Create a repository with a name same as GitHub username**
 
-<br>
-
 <div align="middle">
     <img class="img-thumbnail radius" src="/article/how-i-make-my-github-profile-look-cool-with-markdown/image2.jpg" alt="Sample Cool GitHub Profile" style="width: 95%;">
 </div>
@@ -39,10 +35,8 @@ Create your repository, but make sure the name repository same as username githu
 
 ## **2. Edit README on your repository  as you like**
 
-<br>
-
 <div align="middle">
-    <img class="img-thumbnail radius" src="/article/how-i-make-my-github-profile-look-cool-with-markdown/image3.jpg" alt="Sample Cool GitHub Profile" style="width: 95%;">
+    <img class="img-thumbnail radius" src="/article/how-i-make-my-github-profile-look-cool-with-markdown/image3.jpg" alt="Sample Cool GitHub Profile" style="width: 95%;">jhyuyufyfuy
 </div>
 
 <br>
@@ -53,8 +47,6 @@ First time create a repository you will get this. Now you can start editing your
 <br>
 
 ## **3. Look at it! you have cool GitHub profile**
-
-<br>
 
 <div align="middle">
     <img class="img-thumbnail radius" src="/article/how-i-make-my-github-profile-look-cool-with-markdown/image4.jpg" alt="Sample Cool GitHub Profile" style="width: 95%;">

@@ -19,7 +19,6 @@ Website in general for making responsive used a media query, but if you write al
 
 ## **Min Usage**
 
-<br/>
 <div align="middle">
     <img class="img-thumbnail radius" src="/article/css-function-min-max-and-clamp-is-incredible/min.gif" alt="Sample Cool GitHub Profile" style="width: 95%;">
 </div>
@@ -32,7 +31,6 @@ Min function has a two-parameter, which one is dynamic number you can use dimens
 
 ## **Max Usage**
 
-<br/>
 <div align="middle">
     <img class="img-thumbnail radius" src="/article/css-function-min-max-and-clamp-is-incredible/max.gif" alt="Sample Cool GitHub Profile" style="width: 95%;">
 </div>
@@ -45,7 +43,6 @@ Max function, this function does not have the bigger difference, you can think t
 
 ## **Clamp Usage**
 
-<br/>
 <div align="middle">
     <img class="img-thumbnail radius" src="/article/css-function-min-max-and-clamp-is-incredible/clamp.gif" alt="Sample Cool GitHub Profile" style="width: 95%;">
 </div>
