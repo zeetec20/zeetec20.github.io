@@ -9,28 +9,17 @@ import { theme } from '@/store/theme'
 import { setThemeMode } from '@/services/theme'
 
 function Layout({ children }: any) {
-  const [test, settest] = useState(0)
   const themeCallback = useRecoilCallback( ({snapshot}) => async () => {
     setThemeMode(await snapshot.getPromise(theme))
   })
   const meta_url = process.env.domain
   const meta_name = 'Firman Lestari ✋'
-  const meta_description = 'Is it my personal website build with next js, I make this site for sharing about technology and my learning, there are also showcase my project.'
+  const meta_description = 'This is my personal website built with Next.js. I created this site to share information about technology and my learning. It also showcases my projects.'
   const meta_image = `${process.env.domain}/meta_image.png`
 
   useEffect(() => {
     themeCallback()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      settest(test + 1)
-    }, 500)
-    return () => {
-      clearInterval(interval)
-    }
-  })
+  }, [themeCallback])
 
   return (
     <>
