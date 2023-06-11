@@ -107,8 +107,6 @@ dart main.dart
 
 ### **Concurrency**
 
-<br/>
-
 Function concurrency, this is a where I make multiple task to execute concurrency, you can look function **Future.wait**, this function have a List parameter this is place to put the task to execute, for the return all of task it will come on return **Future.wait**, the value return will wrapped with List and the list value is be in order of tasks.
 
 ```dart
@@ -134,8 +132,6 @@ Future concurrency() async {
 
 ### **Mediocre**
 
-<br/>
-
 Function mediocre, this is a usual method to execute multiple task in there I just call in sequence.
 
 ```dart
@@ -158,8 +154,6 @@ Future mediocre() async {
 
 ### **Once**
 
-<br/>
-
 Function once is I writing for comparing speed execution with other function
 
 ```dart
@@ -179,8 +173,6 @@ Future once() async {
 <br/>
 
 ### **Comparing speed execution**
-
-<br/>
 
 After we try to execute all functions concurrency, mediocre and once, we got this. You can see on below we have some image to describe perform concurrency when measured by time. In function concurrency we run 3 task but time execute is not very different with function once which them run 1 task.
 
