@@ -1,6 +1,6 @@
 ---
 title: What's git stash?
-description: Typescript is static type programming language, in here I will show you how to modify type. For modify I will use Omit, it's one of utility types on Typescript.
+description: Git stash is one of features from Git Version Control, you can use this feature for saving your work temporally on your device without committing.
 thumbnail: /article/whats-git-stash/thumbnail.jpg
 createdAt: 11-06-2023
 writer: zeetec20
