@@ -4,7 +4,7 @@ description: Git stash is one of features from Git Version Control, you can use 
 thumbnail: /article/whats-git-stash/thumbnail.jpg
 createdAt: 11-06-2023
 writer: zeetec20
-tag: [Git, Version Control]
+tag: [Git, Version Control, Tips and Trick]
 ---
 
 # **What's git stash?**
